@@ -1,0 +1,16 @@
+CREATE DATABASE `project` /*!40100 DEFAULT CHARACTER SET utf8 */;
+use project;
+
+create table user_details(
+	id int,
+    name varchar(50),
+    age int,
+    address varchar(100),
+    gender char,
+    dob date,
+    user_since date,
+    city varchar(50),
+    primary key(id)
+);
+
+insert into user_details values(5,"adesh",19,"uttam nagar","M","1996-08-30","2016-04-07","New Delhi")
