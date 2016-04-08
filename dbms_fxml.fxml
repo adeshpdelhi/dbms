@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="630.0" prefWidth="593.0">
+         <children>
+            <TabPane layoutX="-1.0" prefHeight="442.0" prefWidth="594.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="PLANS">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="594.0">
+                           <children>
+                              <Label layoutX="76.0" layoutY="90.0" text="Plan ID" />
+                              <Label fx:id="plans_price_from" layoutX="76.0" layoutY="143.0" text="Price" />
+                              <Label layoutX="76.0" layoutY="207.0" text="Type" />
+                              <Label layoutX="76.0" layoutY="268.0" text="Calls (min)" />
+                              <TextField fx:id="plans_planid" layoutX="222.0" layoutY="86.0" prefHeight="25.0" prefWidth="151.0" />
+                              <TextField fx:id="plans_price_to" layoutX="440.0" layoutY="141.0" prefHeight="25.0" prefWidth="112.0" />
+                              <TextField fx:id="plans_price_from" layoutX="257.0" layoutY="141.0" prefHeight="25.0" prefWidth="116.0" />
+                              <Label layoutX="399.0" layoutY="145.0" text="To" />
+                              <Label layoutX="218.0" layoutY="145.0" text="From" />
+                              <RadioButton fx:id="plans_type_postpaid" layoutX="216.0" layoutY="199.0" mnemonicParsing="false" text="Postpaid">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="plans_type" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="plans_type_prepaid" layoutX="423.0" layoutY="199.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$plans_type" />
+                              <CheckBox fx:id="plans_calls_1" layoutX="218.0" layoutY="260.0" mnemonicParsing="false" text="&lt;100" />
+                              <CheckBox fx:id="plans_calls_4" layoutX="499.0" layoutY="260.0" mnemonicParsing="false" text="&gt;1000" />
+                              <CheckBox fx:id="plans_calls_3" layoutX="399.0" layoutY="260.0" mnemonicParsing="false" text="500-1000" />
+                              <CheckBox fx:id="plans_calls_2" layoutX="297.0" layoutY="260.0" mnemonicParsing="false" text="100-500" />
+                              <CheckBox fx:id="plans_calls_4" layoutX="496.0" layoutY="300.0" mnemonicParsing="false" text="&gt;1000" />
+                              <Label layoutX="75.0" layoutY="308.0" text="Messages" />
+                              <CheckBox fx:id="plans_calls_2" layoutX="294.0" layoutY="300.0" mnemonicParsing="false" text="100-500" />
+                              <CheckBox fx:id="plans_calls_3" layoutX="396.0" layoutY="300.0" mnemonicParsing="false" text="500-1000" />
+                              <CheckBox fx:id="plans_msg_1" layoutX="218.0" layoutY="300.0" mnemonicParsing="false" text="&lt;100" />
+                              <CheckBox fx:id="plans_calls_4" layoutX="496.0" layoutY="343.0" mnemonicParsing="false" text="&gt;1000" />
+                              <CheckBox fx:id="plans_calls_2" layoutX="294.0" layoutY="343.0" mnemonicParsing="false" text="100-500" />
+                              <CheckBox fx:id="plans_calls_3" layoutX="396.0" layoutY="343.0" mnemonicParsing="false" text="500-1000" />
+                              <CheckBox fx:id="plans_data_1" layoutX="218.0" layoutY="343.0" mnemonicParsing="false" text="&lt;100" />
+                              <Label layoutX="73.0" layoutY="343.0" text="Data Usage (MB)" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="users_mobile" text="USERS">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="users_age_from" layoutX="256.0" layoutY="120.0" prefHeight="17.0" prefWidth="95.0" />
+                              <TextField fx:id="users_age_from" layoutX="426.0" layoutY="120.0" prefHeight="15.0" prefWidth="108.0" />
+                              <TextField layoutX="220.0" layoutY="68.0" />
+                              <TextField fx:id="users_city" layoutX="217.0" layoutY="194.0" prefHeight="25.0" prefWidth="172.0" />
+                              <DatePicker fx:id="users_usersince" layoutX="216.0" layoutY="255.0" />
+                              <Label layoutX="79.0" layoutY="136.0" text="Age" />
+                              <Label layoutX="79.0" layoutY="198.0" text="City" />
+                              <Label layoutX="79.0" layoutY="72.0" text="Mobile No" />
+                              <Label layoutX="74.0" layoutY="259.0" text="User Since" />
+                              <Label layoutX="216.0" layoutY="124.0" text="From" />
+                              <Label layoutX="389.0" layoutY="124.0" text="To" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="changeplan_mobile" text="CHANGE PLAN">
+                     <content>
+                        <AnchorPane fx:id="changeplan_submit" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="69.0" layoutY="81.0" text="Mobile No" />
+                              <Label layoutX="69.0" layoutY="153.0" text="Plan ID" />
+                              <TextField fx:id="changeplan_mobile" layoutX="195.0" layoutY="77.0" />
+                              <TextField fx:id="changeplan_planid" layoutX="195.0" layoutY="149.0" />
+                              <Button fx:id="changeplan_submit" layoutX="203.0" layoutY="221.0" mnemonicParsing="false" text="Submit" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="insertuser_name" text="INSERT USER">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="491.0" prefWidth="694.0">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="72.0" layoutY="90.0" text="Mobile No" />
+                                    <Label layoutX="80.0" layoutY="50.0" text="Name" />
+                                    <Label layoutX="77.0" layoutY="142.0" text="Gender" />
+                                 </children>
+                              </AnchorPane>
+                              <TextField layoutX="199.0" layoutY="46.0" />
+                              <Label layoutX="93.0" layoutY="306.0" text="City" />
+                              <TextField fx:id="insertuser_city" layoutX="202.0" layoutY="302.0" prefHeight="25.0" prefWidth="172.0" />
+                              <Label layoutX="77.0" layoutY="237.0" text="Address" />
+                              <TextArea fx:id="insertuser_address" layoutX="199.0" layoutY="219.0" prefHeight="53.0" prefWidth="275.0" />
+                              <TextField fx:id="insertuser_age" layoutX="201.0" layoutY="176.0" prefHeight="25.0" prefWidth="173.0" />
+                              <Label layoutX="87.0" layoutY="180.0" text="Age" />
+                              <RadioButton fx:id="insertuser_gender_male" layoutX="201.0" layoutY="138.0" mnemonicParsing="false" text="Male">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="insertuser_gender" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="insertuser_gender_female" layoutX="325.0" layoutY="138.0" mnemonicParsing="false" text="Female" toggleGroup="$insertuser_gender" />
+                              <TextField fx:id="insertuser_mobile" layoutX="201.0" layoutY="84.0" />
+                              <Label layoutX="89.0" layoutY="348.0" text="Type" />
+                              <RadioButton fx:id="insertuser_type_postpaid" layoutX="202.0" layoutY="348.0" mnemonicParsing="false" text="Postpaid">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="insertuser_type" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="insertuser_type_prepaid" layoutX="306.0" layoutY="348.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$insertuser_type" />
+                              <Label layoutX="90.0" layoutY="391.0" text="Plan" />
+                              <RadioButton fx:id="insertuser_plan_basicplan" layoutX="199.0" layoutY="391.0" mnemonicParsing="false" text="Basic Plan">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="insertuser_type1" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="insertuser_plan_planid" layoutX="307.0" layoutY="391.0" mnemonicParsing="false" text="Plan ID" toggleGroup="$insertuser_type" />
+                              <TextField fx:id="insertuser_plan_planid_value" layoutX="407.0" layoutY="381.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="QUERIES">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="594.0">
+                           <children>
+                              <CheckBox fx:id="queries_1" layoutX="68.0" layoutY="94.0" mnemonicParsing="false" text="Users who have not paid bills of last k bills" />
+                              <CheckBox fx:id="queries_2" layoutX="72.0" layoutY="141.0" mnemonicParsing="false" text="Users who have used atleast 5 distinct plans" />
+                              <CheckBox fx:id="queries_3" layoutX="68.0" layoutY="190.0" mnemonicParsing="false" text="Users with postpaid bill " />
+                              <CheckBox fx:id="queries_4" layoutX="72.0" layoutY="308.0" mnemonicParsing="false" text="Plans which attracted atleast K users within m months" />
+                              <CheckBox fx:id="queries_5" layoutX="72.0" layoutY="352.0" mnemonicParsing="false" text="Users which have used all plan within time range" />
+                              <TextField fx:id="queries_1_k" layoutX="367.0" layoutY="90.0" prefHeight="25.0" prefWidth="68.0" />
+                              <Label layoutX="342.0" layoutY="94.0" text="k = " />
+                              <TextField fx:id="queries_3_lt_value" layoutX="313.0" layoutY="186.0" prefHeight="25.0" prefWidth="75.0" />
+                              <TextField fx:id="queries_3_gt_value" layoutX="316.0" layoutY="217.0" prefHeight="25.0" prefWidth="74.0" />
+                              <TextField fx:id="queries_3_eq_value" layoutX="314.0" layoutY="247.0" prefHeight="25.0" prefWidth="78.0" />
+                              <CheckBox fx:id="queries_3_gt" layoutX="273.0" layoutY="221.0" mnemonicParsing="false" text="&gt;" />
+                              <CheckBox fx:id="queries_3_eq" layoutX="273.0" layoutY="251.0" mnemonicParsing="false" text="=" />
+                              <CheckBox fx:id="queries_3_lt" layoutX="273.0" layoutY="190.0" mnemonicParsing="false" text="&lt;" />
+                              <TextField fx:id="queries_4_k" layoutX="422.0" layoutY="304.0" prefHeight="25.0" prefWidth="40.0" />
+                              <TextField fx:id="queries_4_m" layoutX="507.0" layoutY="304.0" prefHeight="17.0" prefWidth="54.0" />
+                              <Label layoutX="391.0" layoutY="308.0" text="k = " />
+                              <Label layoutX="481.0" layoutY="308.0" text="m = " />
+                              <Label layoutX="343.0" layoutY="141.0" text="k = " />
+                              <TextField fx:id="queries_2_k" layoutX="368.0" layoutY="137.0" prefHeight="25.0" prefWidth="68.0" />
+                              <Button fx:id="queries_submit" layoutX="271.0" layoutY="387.0" mnemonicParsing="false" text="submit" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
