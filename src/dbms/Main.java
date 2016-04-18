@@ -24,7 +24,6 @@ public class Main extends Application {
             primaryStage.show();
         } catch (Exception ex) {
         	ex.printStackTrace();
-
         }
 		
 	}
@@ -57,8 +56,8 @@ public class Main extends Application {
     }
 
 	public static void main(String[] args) {
-		//launch(args);
-		getUserDetails(5);
+		launch(args);
+		//getUserDetails(5);
 		
 	}
 }
