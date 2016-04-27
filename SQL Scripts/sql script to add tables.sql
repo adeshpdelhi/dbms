@@ -5,7 +5,6 @@ create table user_details(
 	id int primary key auto_increment,
     name varchar(50),
     age int check(age>=18),
-    address varchar(100),
     gender char check(gender='M'|| gender='F'),
 	isactive boolean default true,
     city varchar(50)
