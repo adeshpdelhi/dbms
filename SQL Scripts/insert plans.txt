@@ -1,0 +1,21 @@
+insert into plan_details(calls,msgs,data,type,price) values (50,50,50,'prepaid',50);
+insert into plan_details(calls,msgs,data,type,price) values (100,1000,0,'prepaid',100);
+insert into plan_details(calls,msgs,data,type,price) values (0,0,1000,'prepaid',200);
+insert into plan_details(calls,msgs,data,type,price) values (1000,1000,1000,'prepaid',1000);
+insert into plan_details(calls,msgs,data,type,price) values (500,0,1500,'prepaid',1500);
+insert into plan_details(calls,msgs,data,type,price) values (2000,1500,1000,'prepaid',2000);
+insert into plan_details(calls,msgs,data,type,price) values (500,0,0,'prepaid',500);
+insert into plan_details(calls,msgs,data,type,price) values (100,0,2000,'prepaid',2500);
+insert into plan_details(calls,msgs,data,type,price) values (2000,0,0,'prepaid',1600);
+insert into plan_details(calls,msgs,data,type,price) values (1000,1500,2000,'prepaid',2000);
+
+insert into plan_details(calls,msgs,data,type,price) values (50,50,50,'postpaid',50);
+insert into plan_details(calls,msgs,data,type,price) values (100,1000,0,'postpaid',100);
+insert into plan_details(calls,msgs,data,type,price) values (0,0,1000,'postpaid',200);
+insert into plan_details(calls,msgs,data,type,price) values (1000,1000,1000,'postpaid',1000);
+insert into plan_details(calls,msgs,data,type,price) values (500,0,1500,'postpaid',1500);
+insert into plan_details(calls,msgs,data,type,price) values (2000,1500,1000,'postpaid',2000);
+insert into plan_details(calls,msgs,data,type,price) values (500,0,0,'postpaid',500);
+insert into plan_details(calls,msgs,data,type,price) values (100,0,2000,'postpaid',2500);
+insert into plan_details(calls,msgs,data,type,price) values (2000,0,0,'postpaid',1600);
+insert into plan_details(calls,msgs,data,type,price) values (1000,1500,2000,'postpaid',2000);

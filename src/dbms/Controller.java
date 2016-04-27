@@ -17,18 +17,6 @@ import javafx.scene.control.ToggleGroup;
 
 public class Controller implements Initializable{
 
-    import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-
-public class PleaseProvideControllerClassName {
-
     @FXML
     private TextField queries_1_x;
 
@@ -200,7 +188,7 @@ public class PleaseProvideControllerClassName {
     @FXML
     private TextField queries_3_gt_value;
 
-}
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
