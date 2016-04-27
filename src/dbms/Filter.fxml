@@ -161,7 +161,19 @@
                   </Tab>
                   <Tab text="RESULTS">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="table" layoutX="6.0" layoutY="-3.0" prefHeight="492.0" prefWidth="587.0">
+                                <columns>
+                                  <TableColumn fx:id="c1" prefWidth="95.0" text="C1" />
+                                  <TableColumn fx:id="c2" prefWidth="97.0" text="C2" />
+                                    <TableColumn fx:id="c3" text="C3" />
+                                    <TableColumn fx:id="c4" prefWidth="90.0" text="C4" />
+                                    <TableColumn fx:id="c5" prefWidth="105.0" text="C5" />
+                                    <TableColumn fx:id="c6" minWidth="0.0" prefWidth="114.0" text="C6" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
               </tabs>

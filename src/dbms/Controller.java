@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,9 +17,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable{
     @FXML
@@ -144,6 +149,16 @@ public class Controller implements Initializable{
     private Button users_submit;
     @FXML
     private TextField queries_3_gt_value;
+    @FXML	private TableView table;
+    @FXML	private TableColumn c1;
+    @FXML	private TableColumn c2;
+    @FXML	private TableColumn c3;
+    @FXML	private TableColumn c4;
+    @FXML	private TableColumn c5;
+    @FXML	private TableColumn c6;
+    
+    
+    ObservableList<Plan> plandata=FXCollections.observableArrayList();
     public String appendand (String w,String s){
     	if(w.length()==0)
     		return s;
@@ -230,9 +245,20 @@ public class Controller implements Initializable{
 	    		pclause="("+pclause+")";
 	    	wclause=appendand(wclause,pclause);
     	}
+    	
+    	
+    	
     	if(wclause.length()==0)
     		return;
-    	 ResultSet rs = null;
+    	
+    	c1.setCellValueFactory(new PropertyValueFactory<>("pid"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("calls"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("msgs"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("data"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("type"));
+    	c6.setCellValueFactory(new PropertyValueFactory<>("price"));
+    	c1.setText("pid");c2.setText("calls");c3.setText("msgs");c4.setText("data");c5.setText("type");c6.setText("price");
+    	ResultSet rs = null;
          Connection connection = null;
          Statement statement = null; 
 
@@ -243,8 +269,11 @@ public class Controller implements Initializable{
              statement = connection.createStatement();
              rs = statement.executeQuery(query);
              //System.out.println("Total results found "+rs.getFetchSize());
-             while(rs.next())
+             while(rs.next()){
+            	Plan p=new Plan(rs.getInt("pid"),rs.getInt("calls"),rs.getInt("msgs"), rs.getInt("data"),rs.getString("type"),rs.getInt("price"));
              	System.out.println(". "+rs.getString("pid"));
+             	plandata.add(p);
+             }
          } catch (SQLException ex) {
              ex.printStackTrace();
          } finally {
@@ -256,6 +285,7 @@ public class Controller implements Initializable{
                  }
              }
          }
+         table.setItems(plandata);
     }
     
     public void submituser(ActionEvent e){
