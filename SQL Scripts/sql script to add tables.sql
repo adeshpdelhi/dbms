@@ -7,7 +7,6 @@ create table user_details(
     age int check(age>=18),
     address varchar(100),
     gender char check(gender='M'|| gender='F'),
-    user_since date,
 	isactive boolean default true,
     city varchar(50)
 );
@@ -53,6 +52,6 @@ create table bills(
     amount int,
 	planid int references plan_details(pid),
     ispaid boolean default false,
-    payment_date date,
-    check(payment_date>=date && amount>=0)
+   
+   
 );

@@ -1,0 +1,83 @@
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260376,'2016-03-1',1000,16,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260376,'2016-02-1',1500,17,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260376,'2016-01-1',1600,21,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260376,'2015-11-1',100,14,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260376,'2015-12-1',2500,20,true);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260378,'2016-03-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260378,'2016-02-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260378,'2016-01-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260378,'2015-11-1',2000,22,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260378,'2015-12-1',2000,22,false);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260380,'2016-03-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260380,'2016-02-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260380,'2016-01-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260380,'2015-11-1',2000,22,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260380,'2015-12-1',2000,22,false);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260382,'2016-03-1',1000,16,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260382,'2016-02-1',1500,17,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260382,'2016-01-1',1600,21,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260382,'2015-11-1',2000,18,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260382,'2015-12-1',2500,20,true);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260384,'2016-03-1',500,19,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260384,'2016-02-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260384,'2016-01-1',50,13,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260384,'2015-11-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260384,'2015-12-1',200,15,false);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260386,'2016-03-1',1500,17,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260386,'2016-02-1',1000,16,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260386,'2016-01-1',2000,18,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260386,'2015-12-1',2500,20,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260386,'2015-11-1',100,14,false);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260388,'2016-03-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260388,'2016-02-1',50,13,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260388,'2016-01-1',500,19,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260388,'2015-11-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260388,'2015-12-1',500,19,false);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260390,'2016-03-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260390,'2016-02-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260390,'2016-01-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260390,'2015-11-1',2000,22,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260390,'2015-12-1',2000,22,false);
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260392,'2016-03-1',1000,16,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260392,'2016-02-1',1500,17,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260392,'2016-01-1',1600,21,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260392,'2015-11-1',2000,18,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260392,'2015-12-1',2500,20,true);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260394,'2016-03-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260394,'2016-02-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260394,'2016-01-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260394,'2015-12-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260394,'2015-11-1',2500,10,true);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260396,'2016-03-1',500,19,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260396,'2016-02-1',2500,20,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260396,'2016-01-1',2000,22,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260396,'2015-12-1',1000,16,true);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260396,'2015-11-1',1600,21,true);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260398,'2016-03-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260398,'2016-02-1',50,13,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260398,'2016-01-1',2500,20,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260398,'2015-11-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260398,'2015-12-1',500,19,false);
+
+
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2016-03-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2016-02-1',1500,17,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2016-01-1',500,19,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2015-11-1',200,15,false);
+insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2015-12-1',500,19,false);
