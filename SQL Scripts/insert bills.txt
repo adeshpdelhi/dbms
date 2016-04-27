@@ -81,3 +81,5 @@ insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2016-02
 insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2016-01-1',500,19,false);
 insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2015-11-1',200,15,false);
 insert into bills(mobile,month,amount,planid,ispaid) values (9899260400,'2015-12-1',500,19,false);
+
+update bills set ispaid = false where mobile=9899260382 or mobile=9899260392;

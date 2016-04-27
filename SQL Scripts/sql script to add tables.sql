@@ -39,12 +39,6 @@ create table plan_details(
     check(calls>=0 && data>=0 && msgs>=0 && price>=0)
 );
 
-create table recharges(
-	mobile bigint primary key references user(mobile),
-    date date,
-    amount int
-    check(amount>0)
-);
 
 create table bills(
 	mobile bigint references user(mobile),
