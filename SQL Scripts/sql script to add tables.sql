@@ -48,11 +48,12 @@ create table recharges(
 );
 
 create table bills(
-	mobile bigint primary key references user(mobile),
+	mobile bigint references user(mobile),
     month date,
     amount int,
 	planid int references plan_details(pid),
     ispaid boolean default false,
     payment_date date,
-    check(payment_date>=date && amount>=0)
+    check(payment_date>=date && amount>=0),
+	primary key(mobile,month)
 );
