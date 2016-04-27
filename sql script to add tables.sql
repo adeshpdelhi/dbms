@@ -2,23 +2,25 @@ CREATE DATABASE `project` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 use project;
 create table user_details(
-	id int primary key,
+	id int primary key auto_increment,
     name varchar(50),
     age int check(age>=18),
     address varchar(100),
     gender char check(gender='M'|| gender='F'),
     user_since date,
+	isactive boolean default true,
     city varchar(50)
 );
 
 create table user(
-	id int references user_details(id) primary key,
-    mobile bigint primary key,
-    type char(20)
+	id int references user_details(id),
+    mobile bigint,
+    type char(20),
+    primary key(id,mobile)
 );
 
 create table prepaid_account(
-	mobile bigint primary key,
+	mobile bigint primary key references user(mobile),
     balance int,
     account_since date,
     plan_id int references plan_details(pid),
@@ -26,7 +28,7 @@ create table prepaid_account(
     check(balance>=0 && calls>=0 && data>=0 && msgs>=0)
 );
 create table postpaid_account(
-	mobile bigint primary key,
+	mobile bigint primary key references user(mobile),
     account_since date,
     plan_id int references plan_details(pid),
     calls int, msgs int,data int
@@ -34,7 +36,7 @@ create table postpaid_account(
 );
 
 create table plan_details(
-	pid int primary key,
+	pid int primary key auto_increment,
     calls int, msgs int,data int,
     type char(20),
     price int
@@ -45,7 +47,6 @@ create table recharges(
 	mobile bigint primary key references user(mobile),
     date date,
     amount int
-	
     check(amount>0)
 );
 
@@ -53,6 +54,7 @@ create table bills(
 	mobile bigint primary key references user(mobile),
     month date,
     amount int,
+	planid int references plan_details(pid),
     ispaid boolean default false,
     payment_date date,
     check(payment_date>=date && amount>=0)
