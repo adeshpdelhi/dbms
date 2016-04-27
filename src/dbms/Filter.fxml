@@ -33,37 +33,36 @@
                               <CheckBox fx:id="plans_calls_4" layoutX="499.0" layoutY="260.0" mnemonicParsing="false" text="&gt;1000" />
                               <CheckBox fx:id="plans_calls_3" layoutX="399.0" layoutY="260.0" mnemonicParsing="false" text="500-1000" />
                               <CheckBox fx:id="plans_calls_2" layoutX="297.0" layoutY="260.0" mnemonicParsing="false" text="100-500" />
-                              <CheckBox fx:id="plans_calls_4" layoutX="496.0" layoutY="300.0" mnemonicParsing="false" text="&gt;1000" />
+                              <CheckBox fx:id="plans_msg_4" layoutX="496.0" layoutY="300.0" mnemonicParsing="false" text="&gt;1000" />
                               <Label layoutX="75.0" layoutY="308.0" text="Messages" />
-                              <CheckBox fx:id="plans_calls_2" layoutX="294.0" layoutY="300.0" mnemonicParsing="false" text="100-500" />
-                              <CheckBox fx:id="plans_calls_3" layoutX="396.0" layoutY="300.0" mnemonicParsing="false" text="500-1000" />
+                              <CheckBox fx:id="plans_msg_2" layoutX="294.0" layoutY="300.0" mnemonicParsing="false" text="100-500" />
+                              <CheckBox fx:id="plans_msg_3" layoutX="396.0" layoutY="300.0" mnemonicParsing="false" text="500-1000" />
                               <CheckBox fx:id="plans_msg_1" layoutX="218.0" layoutY="300.0" mnemonicParsing="false" text="&lt;100" />
-                              <CheckBox fx:id="plans_calls_4" layoutX="496.0" layoutY="343.0" mnemonicParsing="false" text="&gt;1000" />
-                              <CheckBox fx:id="plans_calls_2" layoutX="294.0" layoutY="343.0" mnemonicParsing="false" text="100-500" />
-                              <CheckBox fx:id="plans_calls_3" layoutX="396.0" layoutY="343.0" mnemonicParsing="false" text="500-1000" />
+                              <CheckBox fx:id="plans_data_4" layoutX="496.0" layoutY="343.0" mnemonicParsing="false" text="&gt;1000" />
+                              <CheckBox fx:id="plans_data_2" layoutX="294.0" layoutY="343.0" mnemonicParsing="false" text="100-500" />
+                              <CheckBox fx:id="plans_data_3" layoutX="396.0" layoutY="343.0" mnemonicParsing="false" text="500-1000" />
                               <CheckBox fx:id="plans_data_1" layoutX="218.0" layoutY="343.0" mnemonicParsing="false" text="&lt;100" />
                               <Label layoutX="73.0" layoutY="343.0" text="Data Usage (MB)" />
-                              <Button fx:id="plans_submit" layoutX="268.0" layoutY="390.0" mnemonicParsing="false" text="submit" />
+                              <Button fx:id="plans_submit" layoutX="268.0" layoutY="390.0" mnemonicParsing="false" onAction="#submitplan" text="Submit" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="users_mobile" text="USERS">
+                <Tab text="USERS">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <TextField fx:id="users_age_from" layoutX="256.0" layoutY="120.0" prefHeight="17.0" prefWidth="95.0" />
-                              <TextField fx:id="users_age_from" layoutX="426.0" layoutY="120.0" prefHeight="15.0" prefWidth="108.0" />
-                              <TextField layoutX="220.0" layoutY="68.0" />
+                              <TextField fx:id="users_age_to" layoutX="426.0" layoutY="120.0" prefHeight="15.0" prefWidth="108.0" />
                               <TextField fx:id="users_city" layoutX="217.0" layoutY="194.0" prefHeight="25.0" prefWidth="172.0" />
-                              <DatePicker fx:id="users_usersince" layoutX="216.0" layoutY="255.0" />
-                              <Label layoutX="79.0" layoutY="136.0" text="Age" />
+                              <TextField fx:id="users_mobile" layoutX="211.0" layoutY="68.0" prefHeight="25.0" prefWidth="172.0" />
+                              <Label layoutX="79.0" layoutY="123.0" text="Age" />
                               <Label layoutX="79.0" layoutY="198.0" text="City" />
                               <Label layoutX="79.0" layoutY="72.0" text="Mobile No" />
-                              <Label layoutX="74.0" layoutY="259.0" text="User Since" />
                               <Label layoutX="216.0" layoutY="124.0" text="From" />
                               <Label layoutX="389.0" layoutY="124.0" text="To" />
-                              <Button fx:id="users_submit" layoutX="230.0" layoutY="331.0" mnemonicParsing="false" text="submit" />
+                              <Button fx:id="users_submit" layoutX="230.0" layoutY="331.0" mnemonicParsing="false" onAction="#submituser" text="Submit" />
+                      
                            </children>
                         </AnchorPane>
                   </content>
@@ -121,7 +120,7 @@
                               </RadioButton>
                               <RadioButton fx:id="insertuser_plan_planid" layoutX="307.0" layoutY="391.0" mnemonicParsing="false" text="Plan ID" toggleGroup="$insertuser_type" />
                               <TextField fx:id="insertuser_plan_planid_value" layoutX="407.0" layoutY="381.0" />
-                              <Button fx:id="insert_user_submit" layoutX="248.0" layoutY="434.0" mnemonicParsing="false" text="submit" />
+                              <Button fx:id="insert_user_submit" layoutX="248.0" layoutY="434.0" mnemonicParsing="false" text="Submit" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -130,7 +129,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="594.0">
                            <children>
-                              <CheckBox fx:id="queries_1" layoutX="60.0" layoutY="67.0" mnemonicParsing="false" text="Users in X(city) who have not paid bills of last k months" />
+                              <CheckBox fx:id="queries_1" layoutX="60.0" layoutY="67.0" mnemonicParsing="false" text="Users in Pune who have not paid bills of last k months" />
                               <CheckBox fx:id="queries_2" layoutX="62.0" layoutY="141.0" mnemonicParsing="false" text="Users who have used atleast 5 distinct plans with atleast 3 plans having price &gt;=1000" />
                               <CheckBox fx:id="queries_3" layoutX="62.0" layoutY="190.0" mnemonicParsing="false" text="Users with all postpaid bill " />
                               <CheckBox fx:id="queries_4" layoutX="72.0" layoutY="308.0" mnemonicParsing="false" text="Plans which attracted atleast K female users with atleast M in different cities" />
@@ -147,9 +146,7 @@
                               <Label layoutX="461.0" layoutY="332.0" text="k = " />
                               <Label layoutX="471.0" layoutY="162.0" text="k = " />
                               <TextField fx:id="queries_2_k" layoutX="504.0" layoutY="158.0" prefHeight="25.0" prefWidth="68.0" />
-                              <Button fx:id="queries_submit" layoutX="272.0" layoutY="448.0" mnemonicParsing="false" text="submit" />
-                              <Label layoutX="400.0" layoutY="103.0" text="X = " />
-                              <TextField fx:id="queries_1_x" layoutX="458.0" layoutY="99.0" prefHeight="25.0" prefWidth="68.0" />
+                              <Button fx:id="queries_submit" layoutX="272.0" layoutY="448.0" mnemonicParsing="false" text="Submit" />
                               <Label layoutX="340.0" layoutY="330.0" text="M = " />
                               <TextField fx:id="queries_4_m" layoutX="372.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <TextField fx:id="queries_4_calls" layoutX="197.0" layoutY="412.0" prefHeight="25.0" prefWidth="40.0" />
@@ -161,6 +158,11 @@
                            </children>
                         </AnchorPane>
                      </content>
+                  </Tab>
+                  <Tab text="RESULTS">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
                   </Tab>
               </tabs>
             </TabPane>
