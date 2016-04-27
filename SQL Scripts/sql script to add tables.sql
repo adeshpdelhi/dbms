@@ -15,21 +15,18 @@ create table user_details(
 create table user(
 	id int references user_details(id),
     mobile bigint,
-    type char(20),
     primary key(id,mobile)
 );
 
 create table prepaid_account(
 	mobile bigint primary key references user(mobile),
     balance int,
-    account_since date,
     plan_id int references plan_details(pid),
     calls int, msgs int,data int
     check(balance>=0 && calls>=0 && data>=0 && msgs>=0)
 );
 create table postpaid_account(
 	mobile bigint primary key references user(mobile),
-    account_since date,
     plan_id int references plan_details(pid),
     calls int, msgs int,data int
     check(calls>=0 && data>=0 && msgs>=0)

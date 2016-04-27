@@ -1,0 +1,28 @@
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260379,365,2,20,20,20);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260377,35,3,50,50,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260381,856,5,200,500,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260383,852,6,250,0,500);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260385,761,7,0,0,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260387,85,12,1000,1500,2000);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260389,74,1,0,0,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260391,0,1,0,0,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260393,62,12,20,200,200);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260395,74,6,250,0,1000);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260397,95,11,1000,0,0);
+insert into prepaid_account(mobile,balance,plan_id,calls,msgs,data) values (9899260399,628,12,2,20,200);
+
+
+
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260376,16,0,200,600);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260378,16,1000,800,200);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260380,20,100,0,20);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260382,15,0,0,500);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260384,20,50,0,0);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260386,17,400,0,1400);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260388,22,1400,52,192);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260390,14,0,0,0);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260392,21,1000,0,0);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260394,20,50,0,150);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260396,16,100,10,1000);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260398,18,1800,150,150);
+insert into postpaid_account(mobile,plan_id,calls,msgs,data) values (9899260400,19,0,0,0);
