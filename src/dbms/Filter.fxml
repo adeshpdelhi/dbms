@@ -136,8 +136,6 @@
                               <CheckBox fx:id="queries_3_lt" layoutX="273.0" layoutY="190.0" mnemonicParsing="false" text="&lt;" />
                               <TextField fx:id="queries_4_k" layoutX="497.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <Label layoutX="461.0" layoutY="332.0" text="k = " />
-                              <Label layoutX="471.0" layoutY="162.0" text="k = " />
-                              <TextField fx:id="queries_2_k" layoutX="504.0" layoutY="158.0" prefHeight="25.0" prefWidth="68.0" />
                               <Button fx:id="queries_submit" layoutX="272.0" layoutY="448.0" mnemonicParsing="false" text="Submit" />
                               <Label layoutX="340.0" layoutY="330.0" text="M = " />
                               <TextField fx:id="queries_4_m" layoutX="372.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
@@ -167,6 +165,39 @@
                               </TableView>
                            </children></AnchorPane>
                     </content>
+                  </Tab>
+                  <Tab text="MISC">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="misc_usage_submit" layoutX="380.0" layoutY="56.0" mnemonicParsing="false" text="Submit" />
+                              <Label layoutX="21.0" layoutY="27.0" text="View Active Plan Usage" />
+                              <Label layoutX="80.0" layoutY="60.0" text="Mobile No" />
+                              <TextField fx:id="misc_usage_mobile" layoutX="168.0" layoutY="56.0" />
+                              <Label layoutX="20.0" layoutY="102.0" text="Pay Bill" />
+                              <Label layoutX="74.0" layoutY="125.0" text="Mobile No" />
+                              <TextField fx:id="misc_pay_mobile" layoutX="168.0" layoutY="121.0" />
+                              <Label layoutX="20.0" layoutY="165.0" text="Recharge" />
+                              <Label layoutX="74.0" layoutY="195.0" text="Mobile No" />
+                              <TextField fx:id="misc_recharge_mobile" layoutX="168.0" layoutY="191.0" />
+                              <Button fx:id="misc_pay_submit" layoutX="380.0" layoutY="121.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="misc_recharge_submit" layoutX="380.0" layoutY="191.0" mnemonicParsing="false" text="Submit" />
+                              <Label layoutX="26.0" layoutY="235.0" text="Change Account" />
+                              <Label layoutX="74.0" layoutY="261.0" text="Mobile No" />
+                              <TextField fx:id="misc_change_mobile" layoutX="168.0" layoutY="257.0" />
+                              <CheckBox fx:id="misc_change_chage_to_postpaid" layoutX="157.0" layoutY="304.0" mnemonicParsing="false" text="Postpaid" />
+                              <CheckBox fx:id="misc_change_chage_to_prepaid" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" text="Prepaid" />
+                              <Label layoutX="74.0" layoutY="304.0" text="Change To" />
+                              <Label layoutX="20.0" layoutY="351.0" text="Retrieve Bills" />
+                              <Label layoutX="74.0" layoutY="378.0" text="Mobile No" />
+                              <TextField fx:id="misc_retrieve_mobile" layoutX="168.0" layoutY="374.0" />
+                              <Label layoutX="84.0" layoutY="420.0" text="Month" />
+                              <DatePicker fx:id="misc_retrieve_month" layoutX="168.0" layoutY="416.0" />
+                              <Button fx:id="misc_change_submit" layoutX="380.0" layoutY="270.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="misc_retrieve_bills" layoutX="380.0" layoutY="383.0" mnemonicParsing="false" text="Submit" />
+                           </children>
+                        </AnchorPane>
+                     </content>
                   </Tab>
               </tabs>
             </TabPane>
