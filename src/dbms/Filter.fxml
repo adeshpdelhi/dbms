@@ -80,7 +80,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="insertuser_name" text="INSERT USER">
+                  <Tab fx:id="insertuser_name" text="MODIFY USER">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="491.0" prefWidth="694.0">
                            <children>
@@ -91,36 +91,28 @@
                                     <Label layoutX="77.0" layoutY="142.0" text="Gender" />
                                  </children>
                               </AnchorPane>
-                              <TextField layoutX="199.0" layoutY="46.0" />
-                              <Label layoutX="93.0" layoutY="306.0" text="City" />
-                              <TextField fx:id="insertuser_city" layoutX="202.0" layoutY="302.0" prefHeight="25.0" prefWidth="172.0" />
-                              <Label layoutX="77.0" layoutY="237.0" text="Address" />
-                              <TextArea fx:id="insertuser_address" layoutX="199.0" layoutY="219.0" prefHeight="53.0" prefWidth="275.0" />
-                              <TextField fx:id="insertuser_age" layoutX="201.0" layoutY="176.0" prefHeight="25.0" prefWidth="173.0" />
+                              <TextField fx:id="moduser_name" layoutX="199.0" layoutY="46.0" />
+                              <Label layoutX="93.0" layoutY="290.0" text="City" />
+                              <TextField fx:id="moduser_city" layoutX="202.0" layoutY="286.0" prefHeight="25.0" prefWidth="172.0" />
+                              <TextField fx:id="moduser_age" layoutX="201.0" layoutY="176.0" prefHeight="25.0" prefWidth="173.0" />
                               <Label layoutX="87.0" layoutY="180.0" text="Age" />
-                              <RadioButton fx:id="insertuser_gender_male" layoutX="201.0" layoutY="138.0" mnemonicParsing="false" text="Male">
+                              <RadioButton fx:id="moduser_gender_male" layoutX="201.0" layoutY="138.0" mnemonicParsing="false" text="Male">
                                  <toggleGroup>
-                                    <ToggleGroup fx:id="insertuser_gender" />
+                                    <ToggleGroup fx:id="moduser_gender" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="insertuser_gender_female" layoutX="325.0" layoutY="138.0" mnemonicParsing="false" text="Female" toggleGroup="$insertuser_gender" />
-                              <TextField fx:id="insertuser_mobile" layoutX="201.0" layoutY="84.0" />
-                              <Label layoutX="89.0" layoutY="348.0" text="Type" />
-                              <RadioButton fx:id="insertuser_type_postpaid" layoutX="202.0" layoutY="348.0" mnemonicParsing="false" text="Postpaid">
+                              <RadioButton fx:id="moduser_gender_female" layoutX="325.0" layoutY="138.0" mnemonicParsing="false" text="Female" toggleGroup="$moduser_gender" />
+                              <TextField fx:id="moduser_mobile" layoutX="201.0" layoutY="84.0" />
+                              <Label layoutX="89.0" layoutY="332.0" text="Type" />
+                              <RadioButton fx:id="moduser_type_postpaid" layoutX="202.0" layoutY="332.0" mnemonicParsing="false" text="Postpaid">
                                  <toggleGroup>
-                                    <ToggleGroup fx:id="insertuser_type" />
+                                    <ToggleGroup fx:id="moduser_type" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="insertuser_type_prepaid" layoutX="306.0" layoutY="348.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$insertuser_type" />
-                              <Label layoutX="90.0" layoutY="391.0" text="Plan" />
-                              <RadioButton fx:id="insertuser_plan_basicplan" layoutX="199.0" layoutY="391.0" mnemonicParsing="false" text="Basic Plan">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="insertuser_type1" />
-                                 </toggleGroup>
-                              </RadioButton>
-                              <RadioButton fx:id="insertuser_plan_planid" layoutX="307.0" layoutY="391.0" mnemonicParsing="false" text="Plan ID" toggleGroup="$insertuser_type" />
-                              <TextField fx:id="insertuser_plan_planid_value" layoutX="407.0" layoutY="381.0" />
-                              <Button fx:id="insert_user_submit" layoutX="248.0" layoutY="434.0" mnemonicParsing="false" text="Submit" />
+                              <RadioButton fx:id="moduser_type_prepaid" layoutX="306.0" layoutY="332.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$moduser_type" />
+                              <Label layoutX="90.0" layoutY="375.0" text="Plan ID" />
+                              <TextField fx:id="moduser_planid" layoutX="201.0" layoutY="371.0" />
+                              <Button fx:id="insert_user_submit" layoutX="248.0" layoutY="418.0" mnemonicParsing="false" text="Submit" />
                            </children>
                         </AnchorPane>
                      </content>
