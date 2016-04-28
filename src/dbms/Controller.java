@@ -114,13 +114,13 @@ public class Controller implements Initializable{
     private RadioButton moduser_type_prepaid;
 
     @FXML
-    private TextField moduser_planid;
+    private TextField moduser_plan_id;
 
     @FXML
     private TextField moduser_city;
 
     @FXML
-    private TextField changeplan_planid;
+    private TextField changeplan_plan_id;
 
 
     @FXML
@@ -130,7 +130,7 @@ public class Controller implements Initializable{
     private RadioButton moduser_gender_female;
 
     @FXML
-    private TextField plans_planid;
+    private TextField plans_plan_id;
 
     @FXML
     private TextField queries_3_lt_value;
@@ -260,6 +260,7 @@ public class Controller implements Initializable{
     ObservableList<User> userdata=FXCollections.observableArrayList();
     ObservableList <Preaccount> preaccdata=FXCollections.observableArrayList();
     ObservableList <Postaccount> postaccdata=FXCollections.observableArrayList();
+    ObservableList <Bill> billdata=FXCollections.observableArrayList();
     public String appendand (String w,String s){
     	if(w.length()==0)
     		return s;
@@ -274,8 +275,8 @@ public class Controller implements Initializable{
     }
     public void submitplan(ActionEvent e){
     	String wclause="";
-    	if(plans_planid.getText().length()!=0){
-    		wclause=appendand(wclause,"pid="+plans_planid.getText());
+    	if(plans_plan_id.getText().length()!=0){
+    		wclause=appendand(wclause,"plan_id="+plans_plan_id.getText());
     	}
     	if(plans_price_from.getText().length()!=0 && plans_price_to.getText().length()!=0){
     		try{
@@ -352,13 +353,13 @@ public class Controller implements Initializable{
     	if(wclause.length()==0)
     		return;
     	plandata.clear();
-    	c1.setCellValueFactory(new PropertyValueFactory<>("pid"));
+    	c1.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
     	c2.setCellValueFactory(new PropertyValueFactory<>("calls"));
     	c3.setCellValueFactory(new PropertyValueFactory<>("msgs"));
     	c4.setCellValueFactory(new PropertyValueFactory<>("data"));
     	c5.setCellValueFactory(new PropertyValueFactory<>("type"));
     	c6.setCellValueFactory(new PropertyValueFactory<>("price"));
-    	c1.setText("pid");c2.setText("calls");c3.setText("msgs");c4.setText("data");c5.setText("type");c6.setText("price");
+    	c1.setText("plan_id");c2.setText("calls");c3.setText("msgs");c4.setText("data");c5.setText("type");c6.setText("price");
     	ResultSet rs = null;
          Connection connection = null;
          Statement statement = null; 
@@ -371,8 +372,8 @@ public class Controller implements Initializable{
              rs = statement.executeQuery(query);
              //System.out.println("Total results found "+rs.getFetchSize());
              while(rs.next()){
-            	Plan p=new Plan(rs.getInt("pid"),rs.getInt("calls"),rs.getInt("msgs"), rs.getInt("data"),rs.getString("type"),rs.getInt("price"));
-             	System.out.println(". "+rs.getString("pid"));
+            	Plan p=new Plan(rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"), rs.getInt("data"),rs.getString("type"),rs.getInt("price"));
+             	System.out.println(". "+rs.getString("plan_id"));
              	plandata.add(p);
              }
          } catch (SQLException ex) {
@@ -515,12 +516,12 @@ public class Controller implements Initializable{
     		query="DELETE FROM postpaid_account where mobile="+moduser_mobile.getText();
     	justexecute(query);
     }
-    public int[] getplanbypid(int pid){
+    public int[] getplanbyplan_id(int plan_id){
     	ResultSet rs = null;
         Connection connection = null;
         Statement statement = null; 
         int details[] = new int[5];
-        String query = "SELECT * FROM plan_details WHERE pid="+pid;
+        String query = "SELECT * FROM plan_details WHERE plan_id="+plan_id;
         System.out.println(query);
         try {           
             connection = JDBCConnect.getConnection();
@@ -528,7 +529,7 @@ public class Controller implements Initializable{
             rs = statement.executeQuery(query);
             //System.out.println("Total results found "+rs.getFetchSize());
             if(rs.next()){
-	           	details[0]=rs.getInt("pid");
+	           	details[0]=rs.getInt("plan_id");
 	           	details[1]=rs.getInt("calls");
 	           	details[2]=rs.getInt("msgs");
 	           	details[3]=rs.getInt("data");
@@ -549,14 +550,14 @@ public class Controller implements Initializable{
     }
     
     public void insert_user_submit(ActionEvent ae){
-    	if(moduser_name.getText().length()==0 || moduser_mobile.getText().length()==0 || moduser_age.getText().length()==0 ||    	moduser_city.getText().length()==0 || moduser_planid.getText().length()==0 || moduser_gender.getSelectedToggle()==null ||moduser_type.getSelectedToggle()==null)
+    	if(moduser_name.getText().length()==0 || moduser_mobile.getText().length()==0 || moduser_age.getText().length()==0 ||    	moduser_city.getText().length()==0 || moduser_plan_id.getText().length()==0 || moduser_gender.getSelectedToggle()==null ||moduser_type.getSelectedToggle()==null)
     	{
     		System.out.println("Aborted"); return;
     	}
     	String values="'"+moduser_name.getText()+"',"+moduser_age.getText()+",'"+((RadioButton)moduser_gender.getSelectedToggle()).getText().charAt(0)+"','"+moduser_city.getText()+"'";
     	String query="INSERT INTO user_details(name,age,gender,city) values ("+values+")";
     	justexecute(query);
-    	int pdetails[]=getplanbypid(Integer.parseInt(moduser_planid.getText()));
+    	int pdetails[]=getplanbyplan_id(Integer.parseInt(moduser_plan_id.getText()));
     	if(((RadioButton)moduser_type.getSelectedToggle()).getText().equals("Prepaid")){
     		values=moduser_mobile.getText()+",0,"+pdetails[0]+","+pdetails[1]+","+pdetails[2]+","+pdetails[3];
         	query="INSERT INTO prepaid_account values ("+values+")";
@@ -731,6 +732,48 @@ public class Controller implements Initializable{
 		String query="UPDATE bills SET ispaid=true where mobile="+mobile;
 		justexecute(query);
 	}
+	public void misc_retrieve_submit(ActionEvent ae){
+		if(misc_retrieve_mobile.getText().length()==0)
+			return;
+		String mobile=misc_retrieve_mobile.getText();
+		
+		userdata.clear();
+    	c1.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("month"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("planid"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("ispaid"));
+    	c1.setText("mobile");c2.setText("month");c3.setText("amount");c4.setText("planid");c5.setText("ispaid");
+		
+		ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+        String query = "SELECT * FROM bills WHERE mobile="+mobile;
+        System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            while(rs.next()){
+	           	Bill b=new Bill(rs.getString("mobile"),rs.getString("month"),rs.getInt("amount"),rs.getInt("plan_id"),rs.getBoolean("ispaid"));
+	           	billdata.add(b);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+		table.setItems(billdata);
+	}
+	public void misc_recharge_submit(ActionEvent ae){}
+	public void misc_change_submit(ActionEvent ae){}
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

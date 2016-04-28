@@ -5,16 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Plan {
 
-	SimpleIntegerProperty pid;
+	SimpleIntegerProperty plan_id;
 	SimpleIntegerProperty calls;
 	SimpleIntegerProperty msgs;
 	SimpleIntegerProperty data;
 	SimpleIntegerProperty price;
 	SimpleStringProperty type;
 
-	public Plan(int pid, int calls,int msgs,int data, String type, int price )
+	public Plan(int plan_id, int calls,int msgs,int data, String type, int price )
 	{
-		this.pid=new SimpleIntegerProperty(pid);
+		this.plan_id=new SimpleIntegerProperty(plan_id);
 		this.calls=new SimpleIntegerProperty(calls);
 		this.msgs=new SimpleIntegerProperty(msgs);
 		this.data=new SimpleIntegerProperty(data);
@@ -22,9 +22,9 @@ public class Plan {
 		this.type=new SimpleStringProperty(type);
 	}
 
-	public int getPid()
+	public int getPlan_id()
 	{
-		return pid.get();
+		return plan_id.get();
 	}
 
 	public int getCalls()
