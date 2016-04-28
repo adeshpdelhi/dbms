@@ -294,16 +294,16 @@ public class Controller implements Initializable{
     	if(plans_calls_1.isSelected() || plans_calls_2.isSelected() || plans_calls_3.isSelected() || plans_calls_4.isSelected()){
 	    	String pclause="";
     		if(plans_calls_1.isSelected()){
-	    		pclause=appendor(pclause," calls<100");
+	    		pclause=appendor(pclause," pcalls<100");
 	    	}
 	    	if(plans_calls_2.isSelected()){
-	    		pclause=appendor(pclause," calls BETWEEN 100 AND 500");
+	    		pclause=appendor(pclause," pcalls BETWEEN 100 AND 500");
 	    	}
 	    	if(plans_calls_3.isSelected()){
-	    		pclause=appendor(pclause," calls BETWEEN 500 AND 1000");
+	    		pclause=appendor(pclause," pcalls BETWEEN 500 AND 1000");
 	    	}
 	    	if(plans_calls_4.isSelected()){
-	    		pclause=appendor(pclause," calls >1000 ");
+	    		pclause=appendor(pclause," pcalls >1000 ");
 	    	}
 	    	if(pclause.length()!=0)
 	    		pclause="("+pclause+")";
@@ -313,16 +313,16 @@ public class Controller implements Initializable{
     	if(plans_msg_1.isSelected() || plans_msg_2.isSelected() || plans_msg_3.isSelected() || plans_msg_4.isSelected()){
 	    	String pclause="";
     		if(plans_msg_1.isSelected()){
-	    		pclause=appendor(pclause," msgs<100");
+	    		pclause=appendor(pclause," pmsgs<100");
 	    	}
 	    	if(plans_msg_2.isSelected()){
-	    		pclause=appendor(pclause," msgs BETWEEN 100 AND 500");
+	    		pclause=appendor(pclause," pmsgs BETWEEN 100 AND 500");
 	    	}
 	    	if(plans_msg_3.isSelected()){
-	    		pclause=appendor(pclause," msgs BETWEEN 500 AND 1000");
+	    		pclause=appendor(pclause," pmsgs BETWEEN 500 AND 1000");
 	    	}
 	    	if(plans_msg_4.isSelected()){
-	    		pclause=appendor(pclause," msgs >1000 ");
+	    		pclause=appendor(pclause," pmsgs >1000 ");
 	    	}
 	    	if(pclause.length()!=0)
 	    		pclause="("+pclause+")";
@@ -332,16 +332,16 @@ public class Controller implements Initializable{
     	if(plans_data_1.isSelected() || plans_data_2.isSelected() || plans_data_3.isSelected() || plans_data_4.isSelected()){
 	    	String pclause="";
     		if(plans_data_1.isSelected()){
-	    		pclause=appendor(pclause," data<100");
+	    		pclause=appendor(pclause," pdata<100");
 	    	}
 	    	if(plans_data_2.isSelected()){
-	    		pclause=appendor(pclause," data BETWEEN 100 AND 500");
+	    		pclause=appendor(pclause," pdata BETWEEN 100 AND 500");
 	    	}
 	    	if(plans_data_3.isSelected()){
-	    		pclause=appendor(pclause," data BETWEEN 500 AND 1000");
+	    		pclause=appendor(pclause," pdata BETWEEN 500 AND 1000");
 	    	}
 	    	if(plans_data_4.isSelected()){
-	    		pclause=appendor(pclause," data >1000 ");
+	    		pclause=appendor(pclause," pdata >1000 ");
 	    	}
 	    	if(pclause.length()!=0)
 	    		pclause="("+pclause+")";
@@ -354,12 +354,12 @@ public class Controller implements Initializable{
     		return;
     	plandata.clear();
     	c1.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
-    	c2.setCellValueFactory(new PropertyValueFactory<>("calls"));
-    	c3.setCellValueFactory(new PropertyValueFactory<>("msgs"));
-    	c4.setCellValueFactory(new PropertyValueFactory<>("data"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("pcalls"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("pmsgs"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("pdata"));
     	c5.setCellValueFactory(new PropertyValueFactory<>("type"));
     	c6.setCellValueFactory(new PropertyValueFactory<>("price"));
-    	c1.setText("plan_id");c2.setText("calls");c3.setText("msgs");c4.setText("data");c5.setText("type");c6.setText("price");
+    	c1.setText("plan_id");c2.setText("pcalls");c3.setText("pmsgs");c4.setText("pdata");c5.setText("type");c6.setText("price");
     	ResultSet rs = null;
          Connection connection = null;
          Statement statement = null; 
@@ -372,7 +372,7 @@ public class Controller implements Initializable{
              rs = statement.executeQuery(query);
              //System.out.println("Total results found "+rs.getFetchSize());
              while(rs.next()){
-            	Plan p=new Plan(rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"), rs.getInt("data"),rs.getString("type"),rs.getInt("price"));
+            	Plan p=new Plan(rs.getInt("plan_id"),rs.getInt("pcalls"),rs.getInt("pmsgs"), rs.getInt("pdata"),rs.getString("type"),rs.getInt("price"));
              	System.out.println(". "+rs.getString("plan_id"));
              	plandata.add(p);
              }
@@ -773,7 +773,24 @@ public class Controller implements Initializable{
 		table.setItems(billdata);
 	}
 	public void misc_recharge_submit(ActionEvent ae){}
-	public void misc_change_submit(ActionEvent ae){}
+	public void misc_change_submit(ActionEvent ae){
+		if(misc_change_mobile.getText().length()==0)
+			return;
+		String mobile=misc_change_mobile.getText();
+		String oldtype=gettypebymobile(mobile);
+		String newtype;
+		if(oldtype.equals("prepaid")) newtype="postpaid";
+		else newtype="prepaid";
+		String query="DELETE FROM "+oldtype+"_account where mobile="+mobile;
+		justexecute(query);
+		if(newtype.equals("prepaid")){
+			query="INSERT INTO prepaid_account values("+mobile+",0,1,0,0,0)";
+		}
+		if(newtype.equals("postpaid")){
+			query="INSERT INTO postpaid_account values("+mobile+",13,50,50,50)";
+		}
+		justexecute(query);
+	}
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

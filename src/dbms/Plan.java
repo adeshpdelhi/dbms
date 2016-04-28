@@ -6,18 +6,18 @@ import javafx.beans.property.SimpleStringProperty;
 public class Plan {
 
 	SimpleIntegerProperty plan_id;
-	SimpleIntegerProperty calls;
-	SimpleIntegerProperty msgs;
-	SimpleIntegerProperty data;
+	SimpleIntegerProperty pcalls;
+	SimpleIntegerProperty pmsgs;
+	SimpleIntegerProperty pdata;
 	SimpleIntegerProperty price;
 	SimpleStringProperty type;
 
-	public Plan(int plan_id, int calls,int msgs,int data, String type, int price )
+	public Plan(int plan_id, int pcalls,int pmsgs,int pdata, String type, int price )
 	{
 		this.plan_id=new SimpleIntegerProperty(plan_id);
-		this.calls=new SimpleIntegerProperty(calls);
-		this.msgs=new SimpleIntegerProperty(msgs);
-		this.data=new SimpleIntegerProperty(data);
+		this.pcalls=new SimpleIntegerProperty(pcalls);
+		this.pmsgs=new SimpleIntegerProperty(pmsgs);
+		this.pdata=new SimpleIntegerProperty(pdata);
 		this.price=new SimpleIntegerProperty(price);
 		this.type=new SimpleStringProperty(type);
 	}
@@ -27,19 +27,19 @@ public class Plan {
 		return plan_id.get();
 	}
 
-	public int getCalls()
+	public int getPcalls()
 	{
-		return calls.get();
+		return pcalls.get();
 	}
 
-	public int getMsgs()
+	public int getPmsgs()
 	{
-		return msgs.get();
+		return pmsgs.get();
 	}
 	
-	public int getData()
+	public int getPdata()
 	{
-		return data.get();
+		return pdata.get();
 	}
 	public int getPrice()
 	{
