@@ -1,0 +1,49 @@
+use project;
+
+select * from user_details;
+select * from plan_details where plan_id=20;
+select * from postpaid_account natural join user natural join user_details  where plan_id=20;
+select * from bills natural join user natural join user_details  where plan_id=20;
+select * from prepaid_account natural join user natural join user_details where plan_id=20;
+
+
+select * from bills natural join user natural join user_details where name='ravi';
+select * from prepaid_account join plan_details on prepaid_account.plan_id=plan_details.plan_id;
+
+
+alter table plan_details change column calls pcalls int;
+alter table plan_details change column msgs pmsgs int;
+alter table plan_details change column data pdata int;
+
+select id,mobile,name,age,gender,city from bills natural join user natural join user_details where month>='2016-01-01' and city='Pune' and ispaid=false group by mobile having count(*)=3;
+
+
+create view temp (plan_id,mobile)
+as
+select plan_id,mobile from bills
+union
+select plan_id,mobile from postpaid_account
+union
+select plan_id,mobile from prepaid_account
+
+
+select u.id ,t.mobile,u.name,u.age,u.gender,u.city from temp as t natural join user natural join user_details as u group by mobile having count(distinct plan_id)>=5  IN(select u.id ,t.mobile,u.name,u.age,u.gender,u.city from temp as t natural join user natural join user_details as u natural join plan_details as p where p.price>=1000 group by mobile having count(*)>=3);
+
+
+drop view temp2;
+
+select d.id,s.mobile,d.name,d.age,d.gender,d.city from bills as s natural join user natural join user_details as d where amount>=1000 group by mobile having count(*)= (select count(*) from bills where mobile=s.mobile); 
+
+
+create view temp2 (plan_id,mobile)
+as
+select plan_id,mobile from bills
+union
+select plan_id,mobile from postpaid_account
+union
+select plan_id,mobile from prepaid_account
+
+select t.plan_id,pcalls,pmsgs,pdata,p.price, p.type from temp2 as t natural join user natural join user_details as u natural join plan_details as p where u.gender='F' group by plan_id having count(distinct mobile)>=5 and count(distinct city)>=1;
+
+select u.id,s.mobile,u.name,u.age,u.gender,u.city  from prepaid_account as s natural join plan_details as d natural join user natural join user_details as u where pmsgs-s.msgs>=0.1 * (pmsgs) and pcalls-s.calls>=0.5 * (pcalls) and pdata-s.data>=0.5 * (pdata) ;
+select u.id,s.mobile,u.name,u.age,u.gender,u.city from postpaid_account as s natural join plan_details as d natural join user natural join user_details as u where pmsgs-s.msgs>=0.1 * (pmsgs) and pcalls-s.calls>=0.5 * (pcalls) and pdata-s.data>=0.5 * (pdata) ;
