@@ -19,20 +19,20 @@ create table user(
 create table prepaid_account(
 	mobile bigint primary key references user(mobile),
     balance int,
-    plan_id int references plan_details(pid),
+    plan_id int references plan_details(plan_id),
     calls int, msgs int,data int
     check(balance>=0 && calls>=0 && data>=0 && msgs>=0)
 );
 create table postpaid_account(
 	mobile bigint primary key references user(mobile),
-    plan_id int references plan_details(pid),
+    plan_id int references plan_details(plan_id),
     calls int, msgs int,data int
     check(calls>=0 && data>=0 && msgs>=0)
 );
 
 create table plan_details(
-	pid int primary key auto_increment,
-    calls int, msgs int,data int,
+	plan_id int primary key auto_increment,
+    pcalls int, pmsgs int,pdata int,
     type char(20),
     price int
     check(calls>=0 && data>=0 && msgs>=0 && price>=0)
@@ -43,7 +43,7 @@ create table bills(
 	mobile bigint references user(mobile),
     month date,
     amount int,
-	planid int references plan_details(pid),
+	plan_id int references plan_details(plan_id),
     ispaid boolean default false,
     check(payment_date>=date && amount>=0),
 	primary key(mobile,month)

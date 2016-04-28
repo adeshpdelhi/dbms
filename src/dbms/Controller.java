@@ -772,7 +772,14 @@ public class Controller implements Initializable{
         }
 		table.setItems(billdata);
 	}
-	public void misc_recharge_submit(ActionEvent ae){}
+	public void misc_recharge_submit(ActionEvent ae){
+		if (misc_recharge_mobile.getText().length()==0 || misc_recharge_amount.getText().length()==0)
+			return;
+		String mobile=misc_recharge_mobile.getText();
+		String amount=misc_recharge_amount.getText();
+		String query="UPDATE prepaid_account SET balance=balance+"+amount+" where mobile="+mobile;
+		justexecute(query);
+	}
 	public void misc_change_submit(ActionEvent ae){
 		if(misc_change_mobile.getText().length()==0)
 			return;
@@ -791,7 +798,21 @@ public class Controller implements Initializable{
 		}
 		justexecute(query);
 	}
-    @Override
+    
+	public void changeplan_submit(ActionEvent ae){
+		if (changeplan_mobile.getText().length()==0 && changeplan_plan_id.getText().length()==0)
+			return;
+		String mobile=changeplan_mobile.getText();
+		String plan_id=changeplan_plan_id.getText();
+		String type=gettypebymobile(mobile);
+		String query=null;
+		if(type.equals("prepaid"))
+			query="UPDATE prepaid_account SET plan_id="+plan_id+" WHERE mobile="+mobile;
+		if(type.equals("postpaid"))
+			query="UPDATE postpaid_account SET plan_id="+plan_id+" WHERE mobile="+mobile;
+		justexecute(query);
+	}
+	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
