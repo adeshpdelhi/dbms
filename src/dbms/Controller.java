@@ -25,130 +25,248 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable{
-    @FXML
-    private TextField queries_1_x;
-    @FXML
+   @FXML
     private ToggleGroup plans_type;
+
     @FXML
     private TextField users_age_from;
+
+    @FXML
+    private TextField misc_usage_mobile;
+
     @FXML
     private TextField users_age_to;
-    @FXML
-    private RadioButton insertuser_gender_male;
-    @FXML
-    private RadioButton insertuser_type_prepaid;
+
     @FXML
     private RadioButton plans_type_prepaid;
+
     @FXML
     private CheckBox plans_calls_3;
+
     @FXML
     private Button changeplan_submit;
-    @FXML
-    private CheckBox plans_msg_2;
-    @FXML
-    private CheckBox plans_msg_3;
-    @FXML
-    private CheckBox plans_msg_4;
-    @FXML
-    private CheckBox plans_data_2;
-    @FXML
-    private CheckBox plans_data_3;
-    @FXML
-    private CheckBox plans_data_4;
-    @FXML
-    private Button insert_user_submit;
-    @FXML
-    private ToggleGroup insertuser_type;
-    @FXML
-    private CheckBox plans_calls_1;
-    @FXML
-    private CheckBox plans_calls_2;
+
     @FXML
     private CheckBox plans_calls_4;
+
+    @FXML
+    private TextField moduser_name;
+
+    @FXML
+    private TextField misc_retrieve_mobile;
+
+    @FXML
+    private TextField misc_recharge_amount;
+
+    @FXML
+    private RadioButton moduser_type_postpaid;
+
+    @FXML
+    private CheckBox plans_calls_1;
+
+    @FXML
+    private CheckBox plans_calls_2;
+
     @FXML
     private TextField users_city;
+
+    @FXML
+    private DatePicker misc_retrieve_month;
+
+    @FXML
+    private ToggleGroup moduser_gender;
+
     @FXML
     private TextField queries_4_messages;
+
     @FXML
     private TextField queries_1_k;
+
     @FXML
     private CheckBox queries_3_gt;
+
+    @FXML
+    private RadioButton moduser_gender_male;
+
+    @FXML
+    private CheckBox plans_msg_3;
+
+    @FXML
+    private CheckBox plans_msg_4;
+
+    @FXML
+    private TextField moduser_age;
+
+    @FXML
+    private Button moduser_delete;
+
     @FXML
     private CheckBox plans_msg_1;
+
+    @FXML
+    private CheckBox plans_msg_2;
+
     @FXML
     private TextField queries_4_calls;
+
     @FXML
-    private TextArea insertuser_address;
+    private RadioButton moduser_type_prepaid;
+
+    @FXML
+    private TextField moduser_planid;
+
+    @FXML
+    private TableColumn<?, ?> c1;
+
+    @FXML
+    private TextField moduser_city;
+
+    @FXML
+    private TableColumn<?, ?> c2;
+
+    @FXML
+    private TableColumn<?, ?> c3;
+
+    @FXML
+    private TableColumn<?, ?> c4;
+
     @FXML
     private TextField changeplan_planid;
+
     @FXML
-    private ToggleGroup insertuser_type1;
+    private TableColumn<?, ?> c5;
+
+    @FXML
+    private TableColumn<?, ?> c6;
+
+    @FXML
+    private CheckBox misc_change_chage_to_postpaid;
+
+    @FXML
+    private RadioButton moduser_gender_female;
+
     @FXML
     private TextField plans_planid;
+
     @FXML
     private TextField queries_3_lt_value;
+
+    @FXML
+    private TextField misc_recharge_mobile;
+
+    @FXML
+    private Button misc_change_submit;
+
+    @FXML
+    private TextField misc_pay_mobile;
+
     @FXML
     private TextField queries_3_eq_value;
-    @FXML
-    private RadioButton insertuser_type_postpaid;
-    @FXML
-    private RadioButton insertuser_plan_planid;
+
     @FXML
     private RadioButton plans_type_postpaid;
-    @FXML
-    private TextField queries_2_k;
+
     @FXML
     private CheckBox queries_3_eq;
+
+    @FXML
+    private ToggleGroup moduser_type;
+
     @FXML
     private TextField queries_4_k;
-    @FXML
-    private TextField insertuser_city;
+
     @FXML
     private TextField queries_4_m;
-    @FXML
-    private TextField insertuser_plan_planid_value;
+
     @FXML
     private Button queries_submit;
+
     @FXML
-    private ToggleGroup insertuser_gender;
+    private Button misc_pay_submit;
+
+    @FXML
+    private TableView<?> table;
+
     @FXML
     private TextField queries_4_data;
+
     @FXML
-    private TextField insertuser_age;
+    private TextField misc_change_mobile;
+
+    @FXML
+    private Button misc_usage_submit;
+
+    @FXML
+    private Button misc_recharge_submit;
+
     @FXML
     private CheckBox queries_4;
+
     @FXML
     private CheckBox plans_data_1;
+
     @FXML
     private CheckBox queries_3;
+
     @FXML
     private CheckBox queries_3_lt;
+
+    @FXML
+    private CheckBox plans_data_2;
+
     @FXML
     private CheckBox queries_2;
+
+    @FXML
+    private CheckBox plans_data_3;
+
     @FXML
     private CheckBox queries_1;
+
+    @FXML
+    private CheckBox plans_data_4;
+
     @FXML
     private TextField changeplan_mobile;
+
     @FXML
     private Button plans_submit;
+
     @FXML
     private CheckBox queries_5;
+
+    @FXML
+    private Tab insertuser_name;
+
     @FXML
     private TextField plans_price_from;
+
     @FXML
-    private RadioButton insertuser_plan_basicplan;
+    private Button moduser_submit;
+
     @FXML
-    private RadioButton insertuser_gender_female;
+    private TextField moduser_mobile;
+
     @FXML
     private TextField users_mobile;
+
     @FXML
     private TextField plans_price_to;
-    @FXML
-    private TextField insertuser_mobile;
+
     @FXML
     private Button users_submit;
+
     @FXML
     private TextField queries_3_gt_value;
+
+    @FXML
+    private CheckBox misc_change_chage_to_prepaid;
+
+    @FXML
+    private Button misc_retrieve_bills;
+
+    @FXML
+    void submitplan(ActionEvent event) {
     @FXML	private TableView table;
     @FXML	private TableColumn c1;
     @FXML	private TableColumn c2;

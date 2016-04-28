@@ -112,7 +112,8 @@
                               <RadioButton fx:id="moduser_type_prepaid" layoutX="306.0" layoutY="332.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$moduser_type" />
                               <Label layoutX="90.0" layoutY="375.0" text="Plan ID" />
                               <TextField fx:id="moduser_planid" layoutX="201.0" layoutY="371.0" />
-                              <Button fx:id="insert_user_submit" layoutX="248.0" layoutY="418.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="moduser_submit" layoutX="248.0" layoutY="418.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="moduser_delete" layoutX="368.0" layoutY="418.0" mnemonicParsing="false" text="Delete" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -136,7 +137,7 @@
                               <CheckBox fx:id="queries_3_lt" layoutX="273.0" layoutY="190.0" mnemonicParsing="false" text="&lt;" />
                               <TextField fx:id="queries_4_k" layoutX="497.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <Label layoutX="461.0" layoutY="332.0" text="k = " />
-                              <Button fx:id="queries_submit" layoutX="272.0" layoutY="448.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="queries_submit" layoutX="271.0" layoutY="461.0" mnemonicParsing="false" text="Submit" />
                               <Label layoutX="340.0" layoutY="330.0" text="M = " />
                               <TextField fx:id="queries_4_m" layoutX="372.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <TextField fx:id="queries_4_calls" layoutX="197.0" layoutY="412.0" prefHeight="25.0" prefWidth="40.0" />
@@ -195,6 +196,8 @@
                               <DatePicker fx:id="misc_retrieve_month" layoutX="168.0" layoutY="416.0" />
                               <Button fx:id="misc_change_submit" layoutX="380.0" layoutY="270.0" mnemonicParsing="false" text="Submit" />
                               <Button fx:id="misc_retrieve_bills" layoutX="380.0" layoutY="383.0" mnemonicParsing="false" text="Submit" />
+                              <TextField fx:id="misc_recharge_amount" layoutX="175.0" layoutY="223.0" />
+                              <Label layoutX="88.0" layoutY="215.0" text="Amount" />
                            </children>
                         </AnchorPane>
                      </content>
