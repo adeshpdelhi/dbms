@@ -530,9 +530,9 @@ public class Controller implements Initializable{
             //System.out.println("Total results found "+rs.getFetchSize());
             if(rs.next()){
 	           	details[0]=rs.getInt("plan_id");
-	           	details[1]=rs.getInt("calls");
-	           	details[2]=rs.getInt("msgs");
-	           	details[3]=rs.getInt("data");
+	           	details[1]=rs.getInt("pcalls");
+	           	details[2]=rs.getInt("pmsgs");
+	           	details[3]=rs.getInt("pdata");
 	           	details[4]=rs.getInt("price");
             }
         } catch (SQLException ex) {
@@ -607,7 +607,6 @@ public class Controller implements Initializable{
 	             while(rs.next()){
 	            	Preaccount a=new Preaccount(rs.getString("mobile"),rs.getInt("balance"),rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"),rs.getInt("data"));
 	            	preaccdata.add(a);
-	            	System.out.println("adding");
 	             }
 	         } catch (SQLException ex) {
 	             ex.printStackTrace();
@@ -646,7 +645,6 @@ public class Controller implements Initializable{
 	             while(rs.next()){
 	            	Postaccount a=new Postaccount(rs.getString("mobile"),rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"),rs.getInt("data"));
 	            	postaccdata.add(a);
-	            	System.out.println("adding");
 	             }
 	         } catch (SQLException ex) {
 	             ex.printStackTrace();
@@ -806,10 +804,11 @@ public class Controller implements Initializable{
 		String plan_id=changeplan_plan_id.getText();
 		String type=gettypebymobile(mobile);
 		String query=null;
+		int pd[]=getplanbyplan_id(Integer.parseInt(plan_id));
 		if(type.equals("prepaid"))
-			query="UPDATE prepaid_account SET plan_id="+plan_id+" WHERE mobile="+mobile;
+			query="UPDATE prepaid_account SET plan_id="+plan_id+" , calls="+pd[1]+" , msgs="+pd[2]+" , data="+pd[3]+" WHERE mobile="+mobile;
 		if(type.equals("postpaid"))
-			query="UPDATE postpaid_account SET plan_id="+plan_id+" WHERE mobile="+mobile;
+			query="UPDATE postpaid_account SET plan_id="+plan_id+" , calls="+pd[1]+" , msgs="+pd[2]+" , data="+pd[3]+" WHERE mobile="+mobile;
 		justexecute(query);
 	}
 	@Override
