@@ -171,7 +171,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="misc_usage_submit" layoutX="380.0" layoutY="56.0" mnemonicParsing="false" text="Submit" />
+                              <Button layoutX="380.0" layoutY="56.0" mnemonicParsing="false" onAction="#misc_usage_submit" text="Submit" />
                               <Label layoutX="21.0" layoutY="27.0" text="View Active Plan Usage" />
                               <Label layoutX="80.0" layoutY="60.0" text="Mobile No" />
                               <TextField fx:id="misc_usage_mobile" layoutX="168.0" layoutY="56.0" />

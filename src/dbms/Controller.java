@@ -20,7 +20,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -259,7 +258,8 @@ public class Controller implements Initializable{
    @FXML	private TableColumn c6;
     ObservableList<Plan> plandata=FXCollections.observableArrayList();
     ObservableList<User> userdata=FXCollections.observableArrayList();
-
+    ObservableList <Preaccount> preaccdata=FXCollections.observableArrayList();
+    ObservableList <Postaccount> postaccdata=FXCollections.observableArrayList();
     public String appendand (String w,String s){
     	if(w.length()==0)
     		return s;
@@ -575,6 +575,92 @@ public class Controller implements Initializable{
     	justexecute(query);
     }
     
+    public void misc_usage_submit(ActionEvent ae){
+    	//System.out.println("here");
+    	if(misc_usage_mobile.getText().length()==0)
+    		{
+    		System.out.println("abort");
+    		return;
+    		}
+    	String mobile=misc_usage_mobile.getText();
+    	if(gettypebymobile(mobile).equals("prepaid")){
+	    	preaccdata.clear();
+	    	c1.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+	    	c2.setCellValueFactory(new PropertyValueFactory<>("balance"));
+	    	c3.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
+	    	c4.setCellValueFactory(new PropertyValueFactory<>("calls"));
+	    	c5.setCellValueFactory(new PropertyValueFactory<>("msgs"));
+	    	c6.setCellValueFactory(new PropertyValueFactory<>("data"));
+	    	c1.setText("mobile");c2.setText("balance");c3.setText("plan_id");c4.setText("calls");c5.setText("msgs");c6.setText("data");
+	    	ResultSet rs = null;
+	         Connection connection = null;
+	         Statement statement = null; 
+	
+	         String query = "SELECT * FROM prepaid_account WHERE mobile="+mobile ;
+	         System.out.println(query);
+	         try {           
+	             connection = JDBCConnect.getConnection();
+	             statement = connection.createStatement();
+	             rs = statement.executeQuery(query);
+	             //System.out.println("Total results found "+rs.getFetchSize());
+	             while(rs.next()){
+	            	Preaccount a=new Preaccount(rs.getString("mobile"),rs.getInt("balance"),rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"),rs.getInt("data"));
+	            	preaccdata.add(a);
+	            	System.out.println("adding");
+	             }
+	         } catch (SQLException ex) {
+	             ex.printStackTrace();
+	         } finally {
+	             if (connection != null) {
+	                 try {
+	                     connection.close();
+	                 } catch (SQLException ex) {
+	                     ex.printStackTrace();
+	                 }
+	             }
+	         }
+	         table.setItems(preaccdata);
+    	}
+    	else{
+    		postaccdata.clear();
+	    	c1.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+	    	c2.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
+	    	c3.setCellValueFactory(new PropertyValueFactory<>("calls"));
+	    	c4.setCellValueFactory(new PropertyValueFactory<>("msgs"));
+	    	c5.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+
+	    	c1.setText("mobile");c2.setText("plan_id");c3.setText("calls");c4.setText("msgs");c5.setText("data");
+	    	ResultSet rs = null;
+	         Connection connection = null;
+	         Statement statement = null; 
+	
+	         String query = "SELECT * FROM postpaid_account WHERE mobile="+mobile ;
+	         System.out.println(query);
+	         try {           
+	             connection = JDBCConnect.getConnection();
+	             statement = connection.createStatement();
+	             rs = statement.executeQuery(query);
+	             //System.out.println("Total results found "+rs.getFetchSize());
+	             while(rs.next()){
+	            	Postaccount a=new Postaccount(rs.getString("mobile"),rs.getInt("plan_id"),rs.getInt("calls"),rs.getInt("msgs"),rs.getInt("data"));
+	            	postaccdata.add(a);
+	            	System.out.println("adding");
+	             }
+	         } catch (SQLException ex) {
+	             ex.printStackTrace();
+	         } finally {
+	             if (connection != null) {
+	                 try {
+	                     connection.close();
+	                 } catch (SQLException ex) {
+	                     ex.printStackTrace();
+	                 }
+	             }
+	         }
+	         table.setItems(postaccdata);
+    	}
+    }
     public void submituser(ActionEvent e){
     	String wclause="";
     	if(users_mobile.getText().length()!=0){
