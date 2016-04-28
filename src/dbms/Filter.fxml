@@ -181,7 +181,7 @@
                               <Label layoutX="20.0" layoutY="165.0" text="Recharge" />
                               <Label layoutX="74.0" layoutY="195.0" text="Mobile No" />
                               <TextField fx:id="misc_recharge_mobile" layoutX="168.0" layoutY="191.0" />
-                              <Button fx:id="misc_pay_submit" layoutX="380.0" layoutY="121.0" mnemonicParsing="false" text="Submit" />
+                              <Button layoutX="380.0" layoutY="121.0" mnemonicParsing="false" onAction="#misc_pay_submit" text="Submit" />
                               <Button fx:id="misc_recharge_submit" layoutX="380.0" layoutY="191.0" mnemonicParsing="false" text="Submit" />
                               <Label layoutX="26.0" layoutY="235.0" text="Change Account" />
                               <Label layoutX="74.0" layoutY="261.0" text="Mobile No" />

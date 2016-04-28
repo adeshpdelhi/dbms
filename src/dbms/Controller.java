@@ -724,7 +724,14 @@ public class Controller implements Initializable{
         }
         table.setItems(userdata);
     }
-	@Override
+	public void misc_pay_submit(ActionEvent ev){
+		if(misc_pay_mobile.getText().length()==0)
+			return;
+		String mobile=misc_pay_mobile.getText();
+		String query="UPDATE bills SET ispaid=true where mobile="+mobile;
+		justexecute(query);
+	}
+    @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
