@@ -114,7 +114,7 @@ public class Controller implements Initializable{
     @FXML
     private RadioButton moduser_type_prepaid;
 
-
+    @FXML
     private TextField moduser_planid;
 
     @FXML
@@ -389,6 +389,7 @@ public class Controller implements Initializable{
          table.setItems(plandata);
     }
     public void justexecute(String query){
+    	System.out.println("justexecute: "+query);
     	Connection connection = null;
         Statement statement = null; 
         try {           
@@ -414,7 +415,35 @@ public class Controller implements Initializable{
         Connection connection = null;
         Statement statement = null; 
         int id = -1;
-        String query = "SELECT id FROM user_details WHERE name="+name;
+        String query = "SELECT id FROM user_details WHERE name='"+name+"'";
+        System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            if(rs.next()){
+	           	id=rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return id;
+    }
+    public int getidbymobile(String mobile){
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+        int id=-1;
+        String query = "SELECT id FROM user_details natural join user WHERE mobile="+mobile;
         System.out.println(query);
         try {           
             connection = JDBCConnect.getConnection();
@@ -438,11 +467,59 @@ public class Controller implements Initializable{
         return id;
     }
     
+    public String gettypebymobile(String mobile){
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+        String type=null;
+        String query = "select distinct \"prepaid\" from user natural join prepaid_account where exists(select \"prepaid\" from prepaid_account where mobile="+mobile+") union select distinct \"postpaid\" from user natural join postpaid_account where exists(select \"postpaid\" from postpaid_account where mobile="+mobile+")";
+        System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            if(rs.next()){
+            	try{
+	           	type=rs.getString("prepaid");
+            	}
+            	catch(Exception e){
+            		type="postpaid";
+            	}
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return type;
+    }
+
+    public void delete_user_submit(ActionEvent ev){
+    	if(moduser_mobile.getText().length()==0)
+    		return;
+    	int id=getidbymobile(moduser_mobile.getText());
+    	String query="DELETE FROM user_details where id="+id;
+    	justexecute(query);
+    	query="DELETE FROM user where mobile="+moduser_mobile.getText();
+    	justexecute(query);
+    	if(gettypebymobile(moduser_mobile.getText()).equals("prepaid"))
+    		query="DELETE FROM prepaid_account where mobile="+moduser_mobile.getText();
+    	else
+    		query="DELETE FROM postpaid_account where mobile="+moduser_mobile.getText();
+    	justexecute(query);
+    }
     public int[] getplanbypid(int pid){
     	ResultSet rs = null;
         Connection connection = null;
         Statement statement = null; 
-        int details[] = null;
+        int details[] = new int[5];
         String query = "SELECT * FROM plan_details WHERE pid="+pid;
         System.out.println(query);
         try {           
@@ -451,8 +528,11 @@ public class Controller implements Initializable{
             rs = statement.executeQuery(query);
             //System.out.println("Total results found "+rs.getFetchSize());
             if(rs.next()){
-	           	details[0]=rs.getInt("pid");details[1]=rs.getInt("calls");details[2]=rs.getInt("msgs");
-	           	details[3]=rs.getInt("data");details[4]=rs.getInt("price");
+	           	details[0]=rs.getInt("pid");
+	           	details[1]=rs.getInt("calls");
+	           	details[2]=rs.getInt("msgs");
+	           	details[3]=rs.getInt("data");
+	           	details[4]=rs.getInt("price");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -473,8 +553,8 @@ public class Controller implements Initializable{
     	{
     		System.out.println("Aborted"); return;
     	}
-    	String values=moduser_name.getText()+","+moduser_age.getText()+","+((RadioButton)moduser_gender.getSelectedToggle()).getText().charAt(0)+","+moduser_city.getText();
-    	String query="INSERT INTO user_details values ("+values+")";
+    	String values="'"+moduser_name.getText()+"',"+moduser_age.getText()+",'"+((RadioButton)moduser_gender.getSelectedToggle()).getText().charAt(0)+"','"+moduser_city.getText()+"'";
+    	String query="INSERT INTO user_details(name,age,gender,city) values ("+values+")";
     	justexecute(query);
     	int pdetails[]=getplanbypid(Integer.parseInt(moduser_planid.getText()));
     	if(((RadioButton)moduser_type.getSelectedToggle()).getText().equals("Prepaid")){
@@ -487,6 +567,10 @@ public class Controller implements Initializable{
     	}
     	justexecute(query);
     	int id=getidbyname(moduser_name.getText());
+    	if(id==-1)
+    	{
+    		System.out.println("Error finding id"); return;
+    	}
     	query="INSERT INTO user values ("+id+","+moduser_mobile.getText()+")"; 
     	justexecute(query);
     }
