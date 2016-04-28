@@ -112,7 +112,7 @@
                               <RadioButton fx:id="moduser_type_prepaid" layoutX="306.0" layoutY="332.0" mnemonicParsing="false" text="Prepaid" toggleGroup="$moduser_type" />
                               <Label layoutX="90.0" layoutY="375.0" text="Plan ID" />
                               <TextField fx:id="moduser_planid" layoutX="201.0" layoutY="371.0" />
-                              <Button fx:id="moduser_submit" layoutX="248.0" layoutY="418.0" mnemonicParsing="false" text="Submit" />
+                              <Button fx:id="moduser_submit" layoutX="248.0" layoutY="418.0" mnemonicParsing="false" onAction="#insert_user_submit" text="Submit" />
                               <Button fx:id="moduser_delete" layoutX="368.0" layoutY="418.0" mnemonicParsing="false" text="Delete" />
                            </children>
                         </AnchorPane>

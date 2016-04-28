@@ -437,6 +437,37 @@ public class Controller implements Initializable{
         }
         return id;
     }
+    
+    public int[] getplanbypid(int pid){
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+        int details[] = null;
+        String query = "SELECT * FROM plan_details WHERE pid="+pid;
+        System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            if(rs.next()){
+	           	details[0]=rs.getInt("pid");details[1]=rs.getInt("calls");details[2]=rs.getInt("msgs");
+	           	details[3]=rs.getInt("data");details[4]=rs.getInt("price");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return details;
+    }
+    
     public void insert_user_submit(ActionEvent ae){
     	if(moduser_name.getText().length()==0 || moduser_mobile.getText().length()==0 || moduser_age.getText().length()==0 ||    	moduser_city.getText().length()==0 || moduser_planid.getText().length()==0 || moduser_gender.getSelectedToggle()==null ||moduser_type.getSelectedToggle()==null)
     	{
@@ -445,15 +476,19 @@ public class Controller implements Initializable{
     	String values=moduser_name.getText()+","+moduser_age.getText()+","+((RadioButton)moduser_gender.getSelectedToggle()).getText().charAt(0)+","+moduser_city.getText();
     	String query="INSERT INTO user_details values ("+values+")";
     	justexecute(query);
-    	int id=getidbyname(moduser_name.getText());
-    	query="INSERT INTO user values ("+id+","+moduser_mobile.getText()+")";
-    	justexecute(query);
+    	int pdetails[]=getplanbypid(Integer.parseInt(moduser_planid.getText()));
     	if(((RadioButton)moduser_type.getSelectedToggle()).getText().equals("Prepaid")){
-    		values="";
+    		values=moduser_mobile.getText()+",0,"+pdetails[0]+","+pdetails[1]+","+pdetails[2]+","+pdetails[3];
+        	query="INSERT INTO prepaid_account values ("+values+")";
     	}
     	if(((RadioButton)moduser_type.getSelectedToggle()).getText().equals("Postpaid")){
-        	values="";
+    		values=moduser_mobile.getText()+","+pdetails[0]+","+pdetails[1]+","+pdetails[2]+","+pdetails[3];
+        	query="INSERT INTO postpaid_account values ("+values+")";
     	}
+    	justexecute(query);
+    	int id=getidbyname(moduser_name.getText());
+    	query="INSERT INTO user values ("+id+","+moduser_mobile.getText()+")"; 
+    	justexecute(query);
     }
     
     public void submituser(ActionEvent e){
