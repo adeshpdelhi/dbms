@@ -735,7 +735,7 @@ public class Controller implements Initializable{
 			return;
 		String mobile=misc_retrieve_mobile.getText();
 		
-		userdata.clear();
+		billdata.clear();
     	c1.setCellValueFactory(new PropertyValueFactory<>("mobile"));
     	c2.setCellValueFactory(new PropertyValueFactory<>("month"));
     	c3.setCellValueFactory(new PropertyValueFactory<>("amount"));
@@ -810,6 +810,179 @@ public class Controller implements Initializable{
 		if(type.equals("postpaid"))
 			query="UPDATE postpaid_account SET plan_id="+plan_id+" , calls="+pd[1]+" , msgs="+pd[2]+" , data="+pd[3]+" WHERE mobile="+mobile;
 		justexecute(query);
+	}
+	public void query1(){
+		if(queries_1_k.getText().length()==0)
+			return;
+		int k=Integer.parseInt(queries_1_k.getText());
+		String date = null;
+		if(k>5) return;
+		if(k==5)	date="2015-11-01";
+		if(k==4)	date="2015-12-01";
+		if(k==3)	date="2016-01-01";
+		if(k==2)	date="2016-02-01";
+		if(k==1)	date="2016-03-01";
+		String query="select id,mobile,name,age,gender,city from bills natural join user natural join user_details where month>='"+date+"' and city='Pune' and ispaid=false group by mobile having count(*)="+k;
+		userdata.clear();
+    	c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("age"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("gender"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("city"));
+    	c6.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+    	c1.setText("id");c2.setText("name");c3.setText("age");c4.setText("gender");c5.setText("city");c6.setText("mobile");
+    	
+    	
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+
+         System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            while(rs.next()){
+            	User u =new User(rs.getInt("id"),rs.getString("name"),rs.getInt("age"), rs.getString("gender"),rs.getString("city"),rs.getString("mobile"));;
+            	System.out.println(". "+rs.getString("id"));
+            	userdata.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        table.setItems(userdata);
+	}
+
+	public void query3(){
+		if(!((queries_3_lt_value.getText().length()!=0&&queries_3_lt.isSelected())|| (queries_3_eq_value.getText().length()!=0&&queries_3_eq.isSelected()) || (queries_3_gt_value.getText().length()!=0&&queries_3_gt.isSelected())))
+			return;
+		String pclause="";
+		if((queries_3_lt_value.getText().length()!=0&&queries_3_lt.isSelected())){
+    		pclause=appendor(pclause," amount< "+queries_3_lt_value.getText()+" ");
+    	}
+    	if(queries_3_eq_value.getText().length()!=0&&queries_3_eq.isSelected()){
+    		pclause=appendor(pclause," amount= "+queries_3_eq_value.getText()+" ");
+    	}
+    	if(queries_3_gt_value.getText().length()!=0&&queries_3_gt.isSelected()){
+    		pclause=appendor(pclause," amount> "+queries_3_gt_value.getText()+" ");
+    	}
+    	if(pclause.length()!=0)
+    		pclause="("+pclause+")";
+    	String query="select d.id,s.mobile,d.name,d.age,d.gender,d.city from bills as s natural join user natural join user_details as d where "+pclause+" group by mobile having count(*)= (select count(*) from bills where mobile=s.mobile)";
+		userdata.clear();
+    	c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("age"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("gender"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("city"));
+    	c6.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+    	c1.setText("id");c2.setText("name");c3.setText("age");c4.setText("gender");c5.setText("city");c6.setText("mobile");
+    	
+    	
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+
+         System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            while(rs.next()){
+            	User u =new User(rs.getInt("d.id"),rs.getString("d.name"),rs.getInt("d.age"), rs.getString("d.gender"),rs.getString("d.city"),rs.getString("s.mobile"));;
+            	System.out.println(". "+rs.getString("id"));
+            	userdata.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        table.setItems(userdata);
+	}
+	public void query4(){
+		if(queries_4_m.getText().length()==0 || queries_4_k.getText().length()==0)
+			return;
+		String m=queries_4_m.getText(); String k=queries_4_k.getText();
+		plandata.clear();
+    	c1.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("pcalls"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("pmsgs"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("pdata"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("type"));
+    	c6.setCellValueFactory(new PropertyValueFactory<>("price"));
+    	c1.setText("plan_id");c2.setText("pcalls");c3.setText("pmsgs");c4.setText("pdata");c5.setText("type");c6.setText("price");
+    	ResultSet rs = null;
+         Connection connection = null;
+         Statement statement = null; 
+
+         String query = "create or replace view temp2 (plan_id,mobile) as select plan_id,mobile from bills union select plan_id,mobile from postpaid_account union select plan_id,mobile from prepaid_account";
+         justexecute(query);
+         query="select t.plan_id,pcalls,pmsgs,pdata,p.price, p.type from temp2 as t natural join user natural join user_details as u natural join plan_details as p where u.gender='F' group by plan_id having count(distinct mobile)>="+k+" and count(distinct city)>="+m;
+         System.out.println(query);
+         
+         try {           
+             connection = JDBCConnect.getConnection();
+             statement = connection.createStatement();
+             rs = statement.executeQuery(query);
+             //System.out.println("Total results found "+rs.getFetchSize());
+             while(rs.next()){
+            	Plan p=new Plan(rs.getInt("t.plan_id"),rs.getInt("pcalls"),rs.getInt("pmsgs"), rs.getInt("pdata"),rs.getString("p.type"),rs.getInt("p.price"));
+             	System.out.println(". "+rs.getString("t.plan_id"));
+             	plandata.add(p);
+             }
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+         } finally {
+             if (connection != null) {
+                 try {
+                     connection.close();
+                 } catch (SQLException ex) {
+                     ex.printStackTrace();
+                 }
+             }
+         }
+         table.setItems(plandata);
+         query="drop view temp2;";
+         justexecute(query);
+	}
+	public void query5(){
+		
+	}
+	
+	public void queries_submit(ActionEvent ae){
+		if(queries_1.isSelected()){
+			query1();
+			return;
+		}
+		if(queries_3.isSelected()){
+			query3();
+			return;
+		}
+		if(queries_4.isSelected()){
+			query4();
+			return;
+		}
+		if(queries_5.isSelected()){
+			query5();
+			return;
+		}
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

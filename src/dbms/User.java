@@ -11,7 +11,7 @@ public class User {
 	SimpleStringProperty gender;
 	SimpleStringProperty city;
 	SimpleStringProperty mobile;
-
+	
 	public User(int id,String name,int age, String gender, String city, String mobile)
 	{
 		this.id=new SimpleIntegerProperty(id);

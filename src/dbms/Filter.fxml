@@ -123,7 +123,6 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="518.0" prefWidth="594.0">
                            <children>
                               <CheckBox fx:id="queries_1" layoutX="60.0" layoutY="67.0" mnemonicParsing="false" text="Users in Pune who have not paid bills of last k months" />
-                              <CheckBox fx:id="queries_2" layoutX="62.0" layoutY="141.0" mnemonicParsing="false" text="Users who have used atleast 5 distinct plans with atleast 3 plans having price &gt;=1000" />
                               <CheckBox fx:id="queries_3" layoutX="62.0" layoutY="190.0" mnemonicParsing="false" text="Users with all postpaid bill " />
                               <CheckBox fx:id="queries_4" layoutX="72.0" layoutY="308.0" mnemonicParsing="false" text="Plans which attracted atleast K female users with atleast M in different cities" />
                               <CheckBox fx:id="queries_5" layoutX="72.0" layoutY="386.0" mnemonicParsing="false" text="Users which have consumed " />
@@ -137,7 +136,7 @@
                               <CheckBox fx:id="queries_3_lt" layoutX="273.0" layoutY="190.0" mnemonicParsing="false" text="&lt;" />
                               <TextField fx:id="queries_4_k" layoutX="497.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <Label layoutX="461.0" layoutY="332.0" text="k = " />
-                              <Button fx:id="queries_submit" layoutX="271.0" layoutY="461.0" mnemonicParsing="false" text="Submit" />
+                              <Button layoutX="271.0" layoutY="461.0" mnemonicParsing="false" onAction="#queries_submit" text="Submit" />
                               <Label layoutX="340.0" layoutY="330.0" text="M = " />
                               <TextField fx:id="queries_4_m" layoutX="372.0" layoutY="328.0" prefHeight="25.0" prefWidth="40.0" />
                               <TextField fx:id="queries_4_calls" layoutX="197.0" layoutY="412.0" prefHeight="25.0" prefWidth="40.0" />
