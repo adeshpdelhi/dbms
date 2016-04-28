@@ -739,9 +739,9 @@ public class Controller implements Initializable{
     	c1.setCellValueFactory(new PropertyValueFactory<>("mobile"));
     	c2.setCellValueFactory(new PropertyValueFactory<>("month"));
     	c3.setCellValueFactory(new PropertyValueFactory<>("amount"));
-    	c4.setCellValueFactory(new PropertyValueFactory<>("planid"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("plan_id"));
     	c5.setCellValueFactory(new PropertyValueFactory<>("ispaid"));
-    	c1.setText("mobile");c2.setText("month");c3.setText("amount");c4.setText("planid");c5.setText("ispaid");
+    	c1.setText("mobile");c2.setText("month");c3.setText("amount");c4.setText("plan_id");c5.setText("ispaid");
 		
 		ResultSet rs = null;
         Connection connection = null;
