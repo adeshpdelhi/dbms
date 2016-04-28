@@ -26,7 +26,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable{
-    @FXML
+	@FXML
     private ToggleGroup plans_type;
 
     @FXML
@@ -51,13 +51,14 @@ public class Controller implements Initializable{
     private CheckBox plans_calls_4;
 
     @FXML
-    private Button insert_user_submit;
-
-    @FXML
     private TextField moduser_name;
 
     @FXML
     private TextField misc_retrieve_mobile;
+    
+    @FXML
+    private TextField misc_recharge_amount;
+
 
     @FXML
     private RadioButton moduser_type_postpaid;
@@ -99,6 +100,9 @@ public class Controller implements Initializable{
     private TextField moduser_age;
 
     @FXML
+    private Button moduser_delete;
+
+    @FXML
     private CheckBox plans_msg_1;
 
     @FXML
@@ -110,32 +114,15 @@ public class Controller implements Initializable{
     @FXML
     private RadioButton moduser_type_prepaid;
 
-    @FXML
-    private TextField moduser_planid;
 
-    @FXML
-    private TableColumn<?, ?> c1;
+    private TextField moduser_planid;
 
     @FXML
     private TextField moduser_city;
 
     @FXML
-    private TableColumn<?, ?> c2;
-
-    @FXML
-    private TableColumn<?, ?> c3;
-
-    @FXML
-    private TableColumn<?, ?> c4;
-
-    @FXML
     private TextField changeplan_planid;
 
-    @FXML
-    private TableColumn<?, ?> c5;
-
-    @FXML
-    private TableColumn<?, ?> c6;
 
     @FXML
     private CheckBox misc_change_chage_to_postpaid;
@@ -179,11 +166,10 @@ public class Controller implements Initializable{
     @FXML
     private Button queries_submit;
 
+
     @FXML
     private Button misc_pay_submit;
 
-    @FXML
-    private TableView table;
 
     @FXML
     private TextField queries_4_data;
@@ -233,11 +219,16 @@ public class Controller implements Initializable{
     @FXML
     private CheckBox queries_5;
 
+
     @FXML
     private Tab insertuser_name;
 
     @FXML
     private TextField plans_price_from;
+
+    @FXML
+    private Button moduser_submit;
+
 
     @FXML
     private TextField moduser_mobile;
@@ -259,11 +250,16 @@ public class Controller implements Initializable{
 
     @FXML
     private Button misc_retrieve_bills;
-
-    
-    
+    @FXML	private TableView table;
+    @FXML	private TableColumn c1;
+    @FXML	private TableColumn c2;
+   @FXML	private TableColumn c3;
+   @FXML	private TableColumn c4;
+   @FXML	private TableColumn c5;
+   @FXML	private TableColumn c6;
     ObservableList<Plan> plandata=FXCollections.observableArrayList();
     ObservableList<User> userdata=FXCollections.observableArrayList();
+
     public String appendand (String w,String s){
     	if(w.length()==0)
     		return s;
