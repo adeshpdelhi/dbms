@@ -963,7 +963,52 @@ public class Controller implements Initializable{
          justexecute(query);
 	}
 	public void query5(){
-		
+		if(queries_4_calls.getText().length()==0 || queries_4_messages.getText().length()==0 || queries_4_data.getText().length()==0)
+			return;
+		Float calls=Float.parseFloat(queries_4_calls.getText())/100,msgs=Float.parseFloat(queries_4_messages.getText())/100,data=Float.parseFloat(queries_4_data.getText())/100;
+		userdata.clear();
+    	c1.setCellValueFactory(new PropertyValueFactory<>("id"));
+    	c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	c3.setCellValueFactory(new PropertyValueFactory<>("age"));
+    	c4.setCellValueFactory(new PropertyValueFactory<>("gender"));
+    	c5.setCellValueFactory(new PropertyValueFactory<>("city"));
+    	c6.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+    	c1.setText("id");c2.setText("name");c3.setText("age");c4.setText("gender");c5.setText("city");c6.setText("mobile");
+    	
+    	
+    	ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null; 
+
+        String query = "select u.id,s.mobile,u.name,u.age,u.gender,u.city  from prepaid_account as s natural join "
+        		+ " plan_details as d natural join user natural join user_details as u where "
+        		+ " pmsgs-s.msgs>="+msgs+" * (pmsgs) and pcalls-s.calls>="+calls+" * (pcalls) and pdata-s.data>="+data+" * (pdata) "
+        		+ " union select u.id,s.mobile,u.name,u.age,u.gender,u.city from postpaid_account as s natural join "
+        		+ " plan_details as d natural join user natural join user_details as u where "
+        		+ " pmsgs-s.msgs>="+msgs+" * (pmsgs) and pcalls-s.calls>="+calls+" * (pcalls) and pdata-s.data>="+data+" * (pdata) ";
+        System.out.println(query);
+        try {           
+            connection = JDBCConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
+            //System.out.println("Total results found "+rs.getFetchSize());
+            while(rs.next()){
+            	User u =new User(rs.getInt("id"),rs.getString("name"),rs.getInt("age"), rs.getString("gender"),rs.getString("city"),rs.getString("mobile"));
+            	System.out.println(". "+rs.getString("id"));
+            	userdata.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        table.setItems(userdata);
 	}
 	
 	public void queries_submit(ActionEvent ae){

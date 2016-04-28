@@ -125,7 +125,7 @@
                               <CheckBox fx:id="queries_1" layoutX="60.0" layoutY="67.0" mnemonicParsing="false" text="Users in Pune who have not paid bills of last k months" />
                               <CheckBox fx:id="queries_3" layoutX="62.0" layoutY="190.0" mnemonicParsing="false" text="Users with all postpaid bill " />
                               <CheckBox fx:id="queries_4" layoutX="72.0" layoutY="308.0" mnemonicParsing="false" text="Plans which attracted atleast K female users with atleast M in different cities" />
-                              <CheckBox fx:id="queries_5" layoutX="72.0" layoutY="386.0" mnemonicParsing="false" text="Users which have consumed " />
+                              <CheckBox fx:id="queries_5" layoutX="72.0" layoutY="386.0" mnemonicParsing="false" text="Users which have consumed atleast" />
                               <TextField fx:id="queries_1_k" layoutX="458.0" layoutY="63.0" prefHeight="25.0" prefWidth="68.0" />
                               <Label layoutX="403.0" layoutY="67.0" text="k = " />
                               <TextField fx:id="queries_3_lt_value" layoutX="313.0" layoutY="186.0" prefHeight="25.0" prefWidth="75.0" />
